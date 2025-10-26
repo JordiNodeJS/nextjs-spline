@@ -36,7 +36,7 @@ canvas {
 
 /* Asegurar que el contenido sea clickeable */
 a, button, input, textarea, select {
-  pointer-events: auto !important;
+  pointer-events: auto;
 }
 
 /* Mejorar la interacción con elementos superpuestos */
@@ -50,7 +50,7 @@ a, button, input, textarea, select {
 button, a[role="button"] {
   position: relative;
   z-index: 50;
-  pointer-events: auto !important;
+  pointer-events: auto;
 }
 
 /* Prevenir superposiciones problemáticas */
