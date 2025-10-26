@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { ArrowLeft, Code, Copy, Move, Palette, Smartphone, Monitor } from "lucide-react";
 
@@ -176,6 +178,11 @@ export default function Modal3D() {
           <p className="text-lg text-gray-600 dark:text-gray-300">
             Domina el arte de posicionar y personalizar tus escenas de Spline
           </p>
+          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">
+              <strong>Nota:</strong> Esta página usa <code className="bg-yellow-100 dark:bg-yellow-900/50 px-1 rounded">'use client'</code> para habilitar la interactividad de los botones de copiar código.
+            </p>
+          </div>
         </div>
 
         {/* Técnicas de posicionamiento */}

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { ArrowLeft, Code, Copy, Play, Zap } from "lucide-react";
 
@@ -115,6 +117,11 @@ export default function PaginaConFondo() {
           <p className="text-lg text-gray-600 dark:text-gray-300">
             Aprende a integrar Spline en tus componentes React de manera efectiva
           </p>
+          <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">
+              <strong>Nota:</strong> Esta página usa <code className="bg-yellow-100 dark:bg-yellow-900/50 px-1 rounded">'use client'</code> para habilitar la interactividad de los botones de copiar código.
+            </p>
+          </div>
         </div>
 
         {/* Ejemplos de código */}
@@ -185,6 +192,57 @@ export default function PaginaConFondo() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Server vs Client Components */}
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-2xl p-8 mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <Code className="w-6 h-6 text-blue-500" />
+            Server Components vs Client Components
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                ¿Cuándo usar 'use client'?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3">
+                En Next.js 16, los componentes son Server Components por defecto. Añade <code className="bg-blue-100 dark:bg-blue-900/50 px-1 rounded">'use client'</code> cuando necesites:
+              </p>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                <li>• Manejar eventos (onClick, onChange)</li>
+                <li>• Usar hooks de React (useState, useEffect)</li>
+                <li>• Acceder a APIs del navegador (window, document)</li>
+                <li>• Usar componentes de terceros que requieren JavaScript</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Ejemplo de uso
+              </h3>
+              <div className="bg-gray-900 rounded-lg p-4">
+                <pre className="text-green-400 text-sm overflow-x-auto">
+                  <code>{`'use client';
+
+import { useState } from 'react';
+import Spline from '@splinetool/react-spline/next';
+
+export default function InteractiveSpline() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  return (
+    <div>
+      {!isLoaded && <div>Cargando...</div>}
+      <Spline 
+        scene="/escena.splinecode"
+        onLoad={() => setIsLoaded(true)}
+      />
+    </div>
+  );
+}`}</code>
+                </pre>
+              </div>
+            </div>
           </div>
         </div>
 
