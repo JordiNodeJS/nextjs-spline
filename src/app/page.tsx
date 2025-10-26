@@ -209,7 +209,9 @@ export default function Home() {
                       <div
                         className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
                       >
-                        <div className="text-white scale-75 sm:scale-100">{stat.icono}</div>
+                        <div className="text-white scale-75 sm:scale-100">
+                          {stat.icono}
+                        </div>
                       </div>
                       <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-1">
                         {stat.numero}
