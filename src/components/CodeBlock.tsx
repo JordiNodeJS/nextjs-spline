@@ -43,7 +43,7 @@ export default function CodeBlock({
       >
         {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre 
-            className={`${highlightClassName} p-6 text-sm overflow-x-auto font-mono`} 
+            className={`${highlightClassName} p-6 text-sm overflow-auto font-mono max-h-96`} 
             style={{
               ...style,
               backgroundColor: '#1e1e1e',
