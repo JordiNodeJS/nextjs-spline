@@ -381,6 +381,252 @@ export default function InteractiveSpline() {
           </div>
         </div>
 
+        {/* Landing Pages Interactivas */}
+        <div className="bg-gradient-to-r from-pink-50 to-cyan-50 dark:from-pink-950/20 dark:to-cyan-950/20 rounded-2xl p-8 mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <Play className="w-6 h-6 text-pink-500" />
+            Landing Pages con Escenas Interactivas
+          </h2>
+
+          <div className="space-y-6">
+            <p className="text-gray-600 dark:text-gray-300">
+              Crear landing pages con escenas 3D interactivas requiere una
+              arquitectura de capas cuidadosa para garantizar que tanto el
+              contenido como la escena sean accesibles e interactivos.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">🎯</span>
+                  Gestión de pointer-events
+                </h3>
+                <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                  <div>
+                    <strong className="text-pink-600 dark:text-pink-400">
+                      CRÍTICO:
+                    </strong>{" "}
+                    El container de SplineBackground debe usar el preset{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      FIXED_FULLSCREEN_INTERACTIVE
+                    </code>
+                  </div>
+                  <div>
+                    <strong className="text-green-600 dark:text-green-400">
+                      ✓ Hacer:
+                    </strong>{" "}
+                    Usar{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      pointer-events-none
+                    </code>{" "}
+                    en capas de overlay y contenido
+                  </div>
+                  <div>
+                    <strong className="text-red-600 dark:text-red-400">
+                      ✗ Evitar:
+                    </strong>{" "}
+                    Divs con{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      pointer-events-auto
+                    </code>{" "}
+                    sobre la escena que bloqueen la interacción
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">📐</span>
+                  Arquitectura de Capas
+                </h3>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="flex items-start gap-2">
+                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      z-0
+                    </span>
+                    <span>SplineBackground (interactivo)</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      z-[1]
+                    </span>
+                    <span>Overlay de gradiente (pointer-events-none)</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      z-10
+                    </span>
+                    <span>Contenido (pointer-events-none en container)</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      ---
+                    </span>
+                    <span>
+                      Elementos interactivos (pointer-events-auto individual)
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">🎨</span>
+                  Contraste y Legibilidad
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <li>
+                    • Usa gradientes oscuros/claros según el fondo de la escena
+                  </li>
+                  <li>
+                    • Aplica{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      backdrop-blur-sm
+                    </code>{" "}
+                    para efecto glassmorphism
+                  </li>
+                  <li>
+                    • Divide la pantalla (50/50) para separar contenido y escena
+                  </li>
+                  <li>• El overlay debe cubrir solo el área del contenido</li>
+                </ul>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">📱</span>
+                  Responsive Design
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <li>
+                    • Usa{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      BACKGROUND_RESPONSIVE
+                    </code>{" "}
+                    para posicionamiento adaptativo
+                  </li>
+                  <li>
+                    • En móvil, prioriza el contenido sobre la interacción 3D
+                  </li>
+                  <li>
+                    • Considera ocultar la escena en pantallas pequeñas si es
+                    pesada
+                  </li>
+                  <li>
+                    • Usa grid{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      lg:grid-cols-2
+                    </code>{" "}
+                    para layout adaptativo
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-pink-100 to-cyan-100 dark:from-pink-900/30 dark:to-cyan-900/30 rounded-xl p-6 border-2 border-pink-200 dark:border-pink-800">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                <span className="text-xl">⚠️</span>
+                Errores Comunes a Evitar
+              </h4>
+              <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex gap-3">
+                  <span className="text-red-500 font-bold">❌</span>
+                  <div>
+                    <strong>No eliminar las capas bloqueantes:</strong> Si hay
+                    un div con z-index superior al canvas y sin{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      pointer-events-none
+                    </code>
+                    , bloqueará toda la interacción.
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-red-500 font-bold">❌</span>
+                  <div>
+                    <strong>Usar preset incorrecto:</strong> El preset por
+                    defecto{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      FIXED_FULLSCREEN
+                    </code>{" "}
+                    tiene{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      pointer-events-none
+                    </code>
+                    , usa{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      FIXED_FULLSCREEN_INTERACTIVE
+                    </code>{" "}
+                    para escenas interactivas.
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-red-500 font-bold">❌</span>
+                  <div>
+                    <strong>Contenido que cubre toda la pantalla:</strong> Si el
+                    contenido no está limitado a un lado, bloqueará la escena.
+                    Usa grid de 2 columnas o limita el ancho.
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-green-500 font-bold">✅</span>
+                  <div>
+                    <strong>Aplicar pointer-events granularmente:</strong>{" "}
+                    Container con{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      pointer-events-none
+                    </code>
+                    , elementos interactivos con{" "}
+                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                      pointer-events-auto
+                    </code>
+                    .
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                <Code className="w-5 h-5 text-cyan-500" />
+                Ejemplo de estructura correcta
+              </h4>
+              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-green-400 text-xs">
+                  <code>{`<div className="relative min-h-screen">
+  {/* Capa 1: Escena 3D (z-0, interactiva) */}
+  <SplineBackground
+    scene={SPLINE_SCENES.KEYBOARD}
+    preset="BACKGROUND_RESPONSIVE"
+    container="FIXED_FULLSCREEN_INTERACTIVE" // ← IMPORTANTE
+    className="fixed inset-0 z-0"
+  />
+
+  {/* Capa 2: Overlay de gradiente (z-[1], no interactivo) */}
+  <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 
+                  bg-gradient-to-r from-black/60 to-transparent 
+                  z-[1] pointer-events-none" /> {/* ← pointer-events-none */}
+
+  {/* Capa 3: Contenido (z-10) */}
+  <div className="relative z-10 min-h-screen flex items-center 
+                  pointer-events-none"> {/* ← pointer-events-none en container */}
+    <div className="grid lg:grid-cols-2 gap-12">
+      {/* Contenido izquierda - interactivo */}
+      <div className="space-y-8 pointer-events-auto"> {/* ← auto solo aquí */}
+        <h1>WebCode</h1>
+        <button>Click me</button> {/* ← Este botón funciona */}
+      </div>
+      
+      {/* Espacio derecho - NO bloquear la escena */}
+      <div className="hidden lg:block pointer-events-none" /> {/* ← none */}
+    </div>
+  </div>
+</div>`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Consejos importantes */}
         <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-950/20 dark:to-orange-950/20 rounded-2xl p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">

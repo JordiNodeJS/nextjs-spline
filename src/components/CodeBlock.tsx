@@ -41,15 +41,29 @@ export default function CodeBlock({
         code={code}
         language={language}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre 
-            className={`${className} p-6 text-sm overflow-x-auto`} 
-            style={style}
+            className={`${highlightClassName} p-6 text-sm overflow-x-auto font-mono`} 
+            style={{
+              ...style,
+              backgroundColor: '#1e1e1e',
+              color: '#d4d4d4',
+              fontSize: '14px',
+              lineHeight: '1.5',
+            }}
           >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
                 {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token })} />
+                  <span 
+                    key={key} 
+                    {...getTokenProps({ token })}
+                    style={{
+                      ...getTokenProps({ token }).style,
+                      // Asegurar que los colores se apliquen correctamente
+                      color: token.color || getTokenProps({ token }).style?.color || '#d4d4d4'
+                    }}
+                  />
                 ))}
               </div>
             ))}
