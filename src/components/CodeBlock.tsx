@@ -28,7 +28,7 @@ export default function CodeBlock({
     <div className={`relative bg-gray-900 rounded-lg overflow-hidden w-full ${className}`}>
       {showCopyButton && (
         <button 
-          className="absolute top-3 right-3 p-2 bg-gray-800/80 hover:bg-gray-700/90 text-gray-300 hover:text-white transition-all duration-200 rounded-md border border-gray-600/50 hover:border-gray-500 z-10 shadow-lg"
+          className="absolute top-3 right-3 p-2 bg-gray-700 hover:bg-gray-600 text-white transition-all duration-200 rounded-md border border-gray-500 hover:border-gray-400 z-10 shadow-md"
           onClick={copyToClipboard}
           title="Copiar código"
         >
