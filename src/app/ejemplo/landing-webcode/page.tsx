@@ -9,17 +9,15 @@ export default function LandingWebCode() {
       <SplineBackground
         scene={SPLINE_SCENES.KEYBOARD}
         preset="BACKGROUND_RESPONSIVE"
+        container="FIXED_FULLSCREEN_INTERACTIVE"
         className="fixed inset-0 z-0"
       />
 
-      {/* Zona interactiva - Lado derecho */}
-      <div className="fixed right-0 top-0 bottom-0 w-full md:w-1/2 z-5 pointer-events-auto" />
-
       {/* Overlay para mejor contraste del texto - Lado izquierdo */}
-      <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-gradient-to-r from-black/60 via-black/40 to-transparent z-[1]" />
+      <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-gradient-to-r from-black/60 via-black/40 to-transparent z-[1] pointer-events-none" />
 
       {/* Contenido principal */}
-      <div className="relative z-10 min-h-screen flex items-center">
+      <div className="relative z-10 min-h-screen flex items-center pointer-events-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Hero Section - Lado izquierdo */}
@@ -83,7 +81,7 @@ export default function LandingWebCode() {
             </div>
 
             {/* Lado derecho - Espacio para interacción con la escena */}
-            <div className="hidden lg:block" />
+            <div className="hidden lg:block pointer-events-none" />
           </div>
         </div>
       </div>
