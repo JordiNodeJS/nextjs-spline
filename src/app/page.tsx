@@ -119,17 +119,11 @@ export default function Home() {
       />
       <div className="relative min-h-screen">
         {/* Spline scene - Full viewport background */}
-        <SplineBackground 
+        <SplineBackground
           scene={SPLINE_SCENES.MAIN}
           preset="BACKGROUND_RESPONSIVE"
+          container="FIXED_FULLSCREEN_INTERACTIVE"
         />
-
-        {/* Interactive zone - Right side */}
-        <div className="fixed top-0 right-0 w-full lg:w-1/2 h-screen z-5 pointer-events-auto">
-          <div className="w-full h-full bg-transparent">
-            {/* This area allows interaction with the Spline scene */}
-          </div>
-        </div>
 
         {/* Gradient overlays for better contrast on left side */}
         <div className="fixed inset-0 z-1 pointer-events-none">
