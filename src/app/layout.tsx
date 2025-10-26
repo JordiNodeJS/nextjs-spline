@@ -110,7 +110,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://cdn.splinetool.com" />
-        <link rel="preload" href={SPLINE_SCENES.MAIN} as="fetch" />
+        {/* Preload for the main spline scene. Add crossorigin to match fetch credentials mode used by the Spline runtime. */}
+        <link
+          rel="preload"
+          href={SPLINE_SCENES.MAIN}
+          as="fetch"
+          crossOrigin="anonymous"
+        />
         <meta name="theme-color" content="#0A0A0A" />
         <meta name="color-scheme" content="light dark" />
       </head>
