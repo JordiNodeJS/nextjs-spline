@@ -5,13 +5,22 @@ export default function Home() {
   return (
     <div className="relative min-h-screen">
       {/* Fixed background with Spline scene */}
-      <div className="fixed inset-0 z-0">
-        <Spline scene="/scene.splinecode" />
+      <div className="fixed inset-0 z-0 overflow-hidden">
+        <div 
+          className="absolute w-[150%] h-[150%]"
+          style={{
+            top: '-25%',
+            right: '-25%',
+            transform: 'translate(50px, -50px)'
+          }}
+        >
+          <Spline scene="/scene.splinecode" />
+        </div>
       </div>
       
       {/* Content layer on top */}
       <div className="relative z-10 flex min-h-screen items-center justify-center font-sans">
-        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white/80 backdrop-blur-sm dark:bg-black/80 sm:items-start">
+        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16  sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
