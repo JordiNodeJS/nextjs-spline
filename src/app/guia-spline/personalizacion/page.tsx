@@ -253,6 +253,91 @@ export default function Modal3D() {
           </div>
         </div>
 
+        {/* Sistema Unificado de Estilos */}
+        <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 shadow-lg">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400">
+              <Palette className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Sistema Unificado de Estilos Spline
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Usa el nuevo sistema centralizado para mantener consistencia y facilitar el mantenimiento
+              </p>
+            </div>
+          </div>
+          
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Uso con Presets (Recomendado)
+              </h4>
+              <CodeBlock 
+                language="tsx"
+                code={`import SplineBackground from '@/components/SplineBackground';
+
+// Fondo de pantalla completa
+<SplineBackground preset="BACKGROUND" />
+
+// Hero section centrado
+<SplineBackground preset="HERO" />
+
+// Sidebar pequeño
+<SplineBackground preset="SIDEBAR" />
+
+// Modal centrado
+<SplineBackground preset="MODAL" />`}
+              />
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Configuración Personalizada
+              </h4>
+              <CodeBlock 
+                language="tsx"
+                code={`// Cambiar solo la posición
+<SplineBackground 
+  preset="BACKGROUND"
+  position="TOP_LEFT"
+/>
+
+// Cambiar tamaño y escala
+<SplineBackground 
+  preset="BACKGROUND"
+  size="EXTRA_LARGE"
+  scale="EXTRA_LARGE"
+/>
+
+// Posición completamente personalizada
+<SplineBackground 
+  preset="BACKGROUND"
+  customPosition={{
+    top: '-30%',
+    right: '-20%',
+    transform: 'translate(100px, -75px)'
+  }}
+/>`}
+              />
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Ventajas del Sistema Unificado
+              </h4>
+              <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                <li><strong>Consistencia:</strong> Todos los estilos Spline siguen el mismo patrón</li>
+                <li><strong>Mantenibilidad:</strong> Cambios centralizados en un solo archivo</li>
+                <li><strong>Flexibilidad:</strong> Presets + overrides + customización</li>
+                <li><strong>TypeScript:</strong> Tipado completo para todas las opciones</li>
+                <li><strong>Reutilización:</strong> Un componente para todos los casos de uso</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <PageNavigation 
           previousHref="/guia-spline/implementacion"
           previousText="Anterior: Implementación"

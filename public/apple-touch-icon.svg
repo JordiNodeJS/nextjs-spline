@@ -1,0 +1,57 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="180" rx="36" fill="#0A0A0A"/>
+  
+  <!-- Circuit pattern -->
+  <path d="M40 40H70V70" stroke="#EC4899" stroke-width="6" stroke-linecap="round"/>
+  <path d="M140 40H110V70" stroke="#06B6D4" stroke-width="6" stroke-linecap="round"/>
+  <path d="M40 140H70V110" stroke="#A855F7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M140 140H110V110" stroke="#EC4899" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Additional circuit lines -->
+  <path d="M90 40V60" stroke="#06B6D4" stroke-width="4" opacity="0.6"/>
+  <path d="M40 90H60" stroke="#EC4899" stroke-width="4" opacity="0.6"/>
+  <path d="M90 140V120" stroke="#A855F7" stroke-width="4" opacity="0.6"/>
+  <path d="M140 90H120" stroke="#06B6D4" stroke-width="4" opacity="0.6"/>
+  
+  <!-- Center 3D element -->
+  <circle cx="90" cy="90" r="35" fill="url(#gradient1)" opacity="0.9"/>
+  <circle cx="90" cy="90" r="25" fill="url(#gradient2)"/>
+  <circle cx="90" cy="90" r="15" fill="url(#gradient3)"/>
+  
+  <!-- Connecting lines -->
+  <line x1="70" y1="70" x2="75" y2="75" stroke="#06B6D4" stroke-width="3" opacity="0.7"/>
+  <line x1="110" y1="70" x2="105" y2="75" stroke="#EC4899" stroke-width="3" opacity="0.7"/>
+  <line x1="70" y1="110" x2="75" y2="105" stroke="#A855F7" stroke-width="3" opacity="0.7"/>
+  <line x1="110" y1="110" x2="105" y2="105" stroke="#06B6D4" stroke-width="3" opacity="0.7"/>
+  
+  <!-- Corner dots -->
+  <circle cx="40" cy="40" r="8" fill="#EC4899"/>
+  <circle cx="140" cy="40" r="8" fill="#06B6D4"/>
+  <circle cx="40" cy="140" r="8" fill="#A855F7"/>
+  <circle cx="140" cy="140" r="8" fill="#EC4899"/>
+  
+  <!-- Smaller accent dots -->
+  <circle cx="90" cy="40" r="5" fill="#06B6D4" opacity="0.8"/>
+  <circle cx="40" cy="90" r="5" fill="#EC4899" opacity="0.8"/>
+  <circle cx="90" cy="140" r="5" fill="#A855F7" opacity="0.8"/>
+  <circle cx="140" cy="90" r="5" fill="#06B6D4" opacity="0.8"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="55" y1="55" x2="125" y2="125" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="65" y1="65" x2="115" y2="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="gradient3" x1="75" y1="75" x2="105" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+</svg>

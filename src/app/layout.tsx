@@ -16,9 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "Guía Spline - Integra Experiencias 3D en Next.js",
-    template: "%s | Guía Spline"
+    template: "%s | Guía Spline",
   },
-  description: "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos, mejores prácticas y optimización profesional.",
+  description:
+    "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos, mejores prácticas y optimización profesional.",
   keywords: [
     "Spline",
     "Next.js",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     "guía",
     "desarrollo web",
     "experiencias interactivas",
-    "frontend"
+    "frontend",
   ],
   authors: [{ name: "WebSnack" }],
   creator: "WebSnack",
@@ -52,7 +53,8 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "https://guia-spline.vercel.app",
     title: "Guía Spline - Integra Experiencias 3D en Next.js",
-    description: "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos y mejores prácticas.",
+    description:
+      "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos y mejores prácticas.",
     siteName: "Guía Spline",
     images: [
       {
@@ -66,7 +68,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Guía Spline - Integra Experiencias 3D en Next.js",
-    description: "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos.",
+    description:
+      "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos.",
     images: ["/og-image.jpg"],
     creator: "@websnack",
   },
@@ -96,11 +99,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://cdn.splinetool.com" />
         <link rel="preload" href="/scene.splinecode" as="fetch" />
-        <meta name="theme-color" content="#dc7cb3" />
+        <meta name="theme-color" content="#0A0A0A" />
         <meta name="color-scheme" content="light dark" />
       </head>
       <body

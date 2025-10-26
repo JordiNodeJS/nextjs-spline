@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Spline from "@splinetool/react-spline/next";
+import SplineBackground from "@/components/SplineBackground";
 import {
   ArrowRight,
   BookOpen,
@@ -117,17 +117,11 @@ export default function Home() {
         }}
       />
       <div className="relative min-h-screen">
-        {/* Spline scene - Right side */}
-        <div className="fixed top-0 right-0 w-full lg:w-1/2 h-screen z-0 pointer-events-none overflow-hidden">
-          <div
-            className="absolute w-full h-full"
-            style={{
-              transform: "scale(1.2)",
-            }}
-          >
-            <Spline scene="/scene.splinecode" />
-          </div>
-        </div>
+        {/* Spline scene - Full viewport background */}
+        <SplineBackground 
+          scene="/scene.splinecode"
+          preset="BACKGROUND"
+        />
 
         {/* Interactive zone - Right side */}
         <div className="fixed top-0 right-0 w-full lg:w-1/2 h-screen z-5 pointer-events-auto">
@@ -138,7 +132,7 @@ export default function Home() {
 
         {/* Gradient overlays for better contrast on left side */}
         <div className="fixed inset-0 z-[1] pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent dark:from-black/70 dark:via-black/40 dark:to-transparent lg:from-white/80 lg:via-white/40 lg:to-transparent dark:lg:from-black/90 dark:lg:via-black/50 dark:lg:to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-white/10 dark:from-black/80 dark:via-black/50 dark:to-black/20 lg:from-white/85 lg:via-white/50 lg:to-transparent dark:lg:from-black/95 dark:lg:via-black/60 dark:lg:to-transparent"></div>
         </div>
 
         {/* Content layer */}
