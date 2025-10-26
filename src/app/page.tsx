@@ -120,7 +120,7 @@ export default function Home() {
         {/* Spline scene - Full viewport background */}
         <SplineBackground 
           scene="/scene.splinecode"
-          preset="BACKGROUND"
+          preset="BACKGROUND_RESPONSIVE"
         />
 
         {/* Interactive zone - Right side */}

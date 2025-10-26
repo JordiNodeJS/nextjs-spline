@@ -9,6 +9,9 @@ import SplineBackground from '@/components/SplineBackground';
 // Fondo de pantalla completa
 <SplineBackground preset="BACKGROUND" />
 
+// Fondo responsive (se desplaza hacia la derecha según el tamaño de pantalla)
+<SplineBackground preset="BACKGROUND_RESPONSIVE" />
+
 // Hero section centrado
 <SplineBackground preset="HERO" />
 
@@ -54,6 +57,7 @@ import SplineBackground from '@/components/SplineBackground';
 - `BOTTOM_LEFT`: Esquina inferior izquierda
 - `FULL_SCREEN`: Pantalla completa
 - `BACKGROUND_OFFSET`: Offset para fondo (por defecto)
+- `RESPONSIVE_RIGHT`: **Desplazamiento responsive hacia la derecha**
 
 ## 📏 Tamaños Disponibles
 
@@ -83,6 +87,12 @@ import SplineBackground from '@/components/SplineBackground';
 - Posición: BACKGROUND_OFFSET
 - Escala: LARGE
 
+### BACKGROUND_RESPONSIVE (Nuevo)
+- Contenedor: FIXED_FULLSCREEN
+- Tamaño: LARGE
+- Posición: RESPONSIVE_RIGHT
+- Escala: LARGE
+
 ### HERO
 - Contenedor: RELATIVE_CONTAINER
 - Tamaño: MEDIUM
@@ -103,17 +113,39 @@ import SplineBackground from '@/components/SplineBackground';
 
 ## 🔧 Ejemplos Avanzados
 
-### Responsive Positioning
+### Desplazamiento Responsive hacia la Derecha
 ```tsx
+// Usar el preset responsive (Recomendado)
+<SplineBackground preset="BACKGROUND_RESPONSIVE" />
+
+// O usar la posición responsive directamente
+<SplineBackground 
+  preset="BACKGROUND"
+  position="RESPONSIVE_RIGHT"
+/>
+
+// Personalización avanzada responsive
 <SplineBackground 
   preset="BACKGROUND"
   customPosition={{
-    top: 'clamp(-80px, -6vh, -30px)',
-    right: 'clamp(-100px, -8vw, -50px)',
-    transform: 'translate(clamp(50px, 8vw, 150px), clamp(-150px, -12vh, -50px))'
+    top: '-25%',
+    right: 'clamp(-30%, -8vw, -5%)',  // Se desplaza más a la derecha en pantallas grandes
+    transform: 'translate(clamp(50px, 10vw, 200px), -50px)'  // Desplazamiento horizontal responsive
   }}
 />
 ```
+
+### Cómo Funciona el Desplazamiento Responsive
+
+- **`right: 'clamp(-30%, -8vw, -5%)'`**:
+  - Pantallas pequeñas: `-30%` (más a la izquierda)
+  - Pantallas medianas: `-8vw` (proporcional al viewport)
+  - Pantallas grandes: `-5%` (más a la derecha)
+
+- **`transform: 'translate(clamp(50px, 10vw, 200px), -50px)'`**:
+  - Pantallas pequeñas: `50px` de desplazamiento horizontal
+  - Pantallas medianas: `10vw` (proporcional al viewport)
+  - Pantallas grandes: `200px` de desplazamiento horizontal
 
 ### Múltiples Escenas
 ```tsx

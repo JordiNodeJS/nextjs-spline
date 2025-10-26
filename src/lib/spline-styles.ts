@@ -41,6 +41,13 @@ export const SPLINE_POSITIONS = {
     top: '-25%',
     right: '-25%',
     transform: 'translate(50px, -50px)',
+  },
+  
+  // Nueva posición responsive hacia la derecha
+  RESPONSIVE_RIGHT: {
+    top: '-30%',
+    right: 'clamp(-35%, -8vw, -38%)',
+    transform: 'translate(clamp(50px, 10vw, 200px), -50px)',
   }
 } as const;
 
@@ -70,6 +77,13 @@ export const SPLINE_PRESETS = {
     container: SPLINE_CONTAINERS.FIXED_FULLSCREEN,
     size: SPLINE_SIZES.LARGE,
     position: SPLINE_POSITIONS.BACKGROUND_OFFSET,
+    scale: SPLINE_SCALES.LARGE,
+  },
+  
+  BACKGROUND_RESPONSIVE: {
+    container: SPLINE_CONTAINERS.FIXED_FULLSCREEN,
+    size: SPLINE_SIZES.LARGE,
+    position: SPLINE_POSITIONS.RESPONSIVE_RIGHT,
     scale: SPLINE_SCALES.LARGE,
   },
   
