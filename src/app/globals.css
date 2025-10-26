@@ -57,3 +57,52 @@ button, a[role="button"] {
 .overlap-fix {
   isolation: isolate;
 }
+
+/* Animaciones personalizadas */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejoras de contraste para legibilidad */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+}
+
+/* Transiciones suaves para elementos interactivos */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efectos de hover mejorados */
+@media (hover: hover) {
+  a:hover, button:hover {
+    transform: translateY(-2px);
+  }
+  
+  a:active, button:active {
+    transform: translateY(0);
+  }
+}
+
+/* Optimización de rendimiento */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
