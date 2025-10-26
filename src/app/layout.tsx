@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@/lib/process-polyfill"; // Polyfill para @splinetool/runtime con Turbopack
 import { GoogleAnalytics, GoogleTagManager } from "@/components/Analytics";
 import { SPLINE_SCENES } from "@/lib/spline-paths";
 

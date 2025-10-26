@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Suspense, lazy } from 'react';
-import Spline from '@splinetool/react-spline/next';
+import { Suspense } from "react";
+import SplineWrapper from "./SplineWrapper";
 
 interface OptimizedSplineProps {
   scene: string;
@@ -26,21 +26,17 @@ function SplineLoading() {
 }
 
 // Componente Spline optimizado con lazy loading
-export default function OptimizedSpline({ 
-  scene, 
-  className = '', 
+export default function OptimizedSpline({
+  scene,
+  className = "",
   style = {},
   onLoad,
-  onError 
+  onError,
 }: OptimizedSplineProps) {
   return (
     <Suspense fallback={<SplineLoading />}>
       <div className={`w-full h-full ${className}`} style={style}>
-        <Spline 
-          scene={scene}
-          onLoad={onLoad}
-          onError={onError}
-        />
+        <SplineWrapper scene={scene} onLoad={onLoad} onError={onError} />
       </div>
     </Suspense>
   );
