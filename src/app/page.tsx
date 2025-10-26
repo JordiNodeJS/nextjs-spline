@@ -1,9 +1,17 @@
 import Image from "next/image";
+import Spline from '@splinetool/react-spline/next';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="relative min-h-screen">
+      {/* Fixed background with Spline scene */}
+      <div className="fixed inset-0 z-0">
+        <Spline scene="/scene.splinecode" />
+      </div>
+      
+      {/* Content layer on top */}
+      <div className="relative z-10 flex min-h-screen items-center justify-center font-sans">
+        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white/80 backdrop-blur-sm dark:bg-black/80 sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -59,7 +67,8 @@ export default function Home() {
             Documentation
           </a>
         </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
