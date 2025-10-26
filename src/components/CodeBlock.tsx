@@ -28,7 +28,7 @@ export default function CodeBlock({
     <div className={`relative bg-gray-900 rounded-lg overflow-hidden w-full ${className}`}>
       {showCopyButton && (
         <button 
-          className="absolute top-3 right-3 p-2 bg-gray-700 hover:bg-gray-600 text-white transition-all duration-200 rounded-md border border-gray-500 hover:border-gray-400 z-10 shadow-md"
+          className="absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 text-white transition-all duration-200 rounded-md border border-gray-500 hover:border-gray-400 z-20 shadow-md"
           onClick={copyToClipboard}
           title="Copiar código"
         >
@@ -43,7 +43,7 @@ export default function CodeBlock({
       >
         {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre 
-            className={`${highlightClassName} p-6 text-sm overflow-auto font-mono max-h-96 w-full`} 
+            className={`${highlightClassName} p-6 pr-12 text-sm overflow-auto font-mono max-h-96 w-full`} 
             style={{
               ...style,
               backgroundColor: '#1e1e1e',
