@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: transparent;
   --foreground: #171717;
+  --spline-bg: #f8fafc; /* Color base que complementa la escena Spline */
 }
 
 @theme inline {
@@ -14,8 +15,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: transparent;
     --foreground: #ededed;
+    --spline-bg: #0f172a; /* Color base oscuro que complementa la escena Spline */
   }
 }
 
@@ -35,4 +37,23 @@ canvas {
 /* Asegurar que el contenido sea clickeable */
 a, button, input, textarea, select {
   pointer-events: auto !important;
+}
+
+/* Mejorar la interacción con elementos superpuestos */
+.interactive-element {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+/* Asegurar que los botones estén siempre clickeables */
+button, a[role="button"] {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
+}
+
+/* Prevenir superposiciones problemáticas */
+.overlap-fix {
+  isolation: isolate;
 }

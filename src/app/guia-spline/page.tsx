@@ -1,5 +1,23 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Code, Palette, Zap } from "lucide-react";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+import PageLayout from "@/components/PageLayout";
+
+export const metadata: Metadata = {
+  title: "Guía Completa",
+  description: "Guía completa paso a paso para integrar Spline en Next.js. Incluye instalación, implementación, personalización y mejores prácticas profesionales.",
+  openGraph: {
+    title: "Guía Completa de Spline para Next.js",
+    description: "Guía completa paso a paso para integrar Spline en Next.js. Incluye instalación, implementación, personalización y mejores prácticas profesionales.",
+    images: ["/og-guide.jpg"],
+  },
+  twitter: {
+    title: "Guía Completa de Spline para Next.js",
+    description: "Guía completa paso a paso para integrar Spline en Next.js. Incluye instalación, implementación, personalización y mejores prácticas profesionales.",
+    images: ["/og-guide.jpg"],
+  },
+};
 
 export default function GuiaSpline() {
   const pasos = [
@@ -38,8 +56,22 @@ export default function GuiaSpline() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
+    <>
+      <StructuredData 
+        type="HowTo" 
+        data={{
+          title: "Cómo integrar Spline en Next.js",
+          description: "Guía completa paso a paso para integrar Spline en Next.js",
+          image: "https://guia-spline.vercel.app/og-guide.jpg",
+          steps: pasos.map(paso => ({
+            name: paso.titulo,
+            text: paso.descripcion,
+            url: `https://guia-spline.vercel.app${paso.href}`
+          }))
+        }} 
+      />
+      <div className="relative min-h-screen">
+        <PageLayout>
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-500 via-cyan-500 to-purple-500 bg-clip-text text-transparent mb-6">
@@ -105,7 +137,8 @@ export default function GuiaSpline() {
             </div>
           </div>
         </div>
+        </PageLayout>
       </div>
-    </div>
+    </>
   );
 }

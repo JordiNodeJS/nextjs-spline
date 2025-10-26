@@ -1,8 +1,9 @@
-'use client';
-
 import Link from "next/link";
-import { ArrowLeft, Code, Play, Zap } from "lucide-react";
+import { Code, Play, Zap } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
+import PageHeader from "@/components/PageHeader";
+import PageLayout from "@/components/PageLayout";
+import PageNavigation from "@/components/PageNavigation";
 
 export default function ImplementacionSpline() {
   const ejemplosCodigo = [
@@ -101,29 +102,18 @@ export default function PaginaConFondo() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="mb-8">
-          <Link 
-            href="/guia-spline" 
-            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Volver a la guía
-          </Link>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Paso 2: Implementación Básica
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Aprende a integrar Spline en tus componentes React de manera efectiva
-          </p>
+    <div className="relative min-h-screen">
+      <PageLayout>
+        <PageHeader 
+          title="Paso 2: Implementación Básica"
+          description="Aprende a integrar Spline en tus componentes React de manera efectiva"
+        >
           <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
             <p className="text-sm text-yellow-800 dark:text-yellow-200">
               <strong>Nota:</strong> Esta página usa <code className="bg-yellow-100 dark:bg-yellow-900/50 px-1 rounded">'use client'</code> para habilitar la interactividad de los botones de copiar código.
             </p>
           </div>
-        </div>
+        </PageHeader>
 
         {/* Ejemplos de código */}
         <div className="space-y-12 mb-16">
@@ -270,22 +260,13 @@ export default function InteractiveSpline() {
           </div>
         </div>
 
-        {/* Navegación */}
-        <div className="flex justify-between items-center">
-          <Link 
-            href="/guia-spline/instalacion" 
-            className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-          >
-            Anterior: Instalación
-          </Link>
-          <Link 
-            href="/guia-spline/personalizacion" 
-            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-cyan-500 text-white rounded-lg hover:from-pink-600 hover:to-cyan-600 transition-all shadow-lg"
-          >
-            Siguiente: Personalización
-          </Link>
-        </div>
-      </div>
+        <PageNavigation 
+          previousHref="/guia-spline/instalacion"
+          previousText="Anterior: Instalación"
+          nextHref="/guia-spline/personalizacion"
+          nextText="Siguiente: Personalización"
+        />
+      </PageLayout>
     </div>
   );
 }

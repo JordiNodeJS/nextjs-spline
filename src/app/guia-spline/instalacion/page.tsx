@@ -1,5 +1,24 @@
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Download, Settings, Terminal } from "lucide-react";
+import { CheckCircle, Download, Settings, Terminal } from "lucide-react";
+import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
+import PageLayout from "@/components/PageLayout";
+import PageNavigation from "@/components/PageNavigation";
+
+export const metadata: Metadata = {
+  title: "Instalación y Configuración",
+  description: "Aprende cómo instalar Spline y configurar tu proyecto Next.js paso a paso. Guía completa con comandos y estructura de proyecto.",
+  openGraph: {
+    title: "Instalación de Spline en Next.js - Guía Paso a Paso",
+    description: "Aprende cómo instalar Spline y configurar tu proyecto Next.js paso a paso. Guía completa con comandos y estructura de proyecto.",
+    images: ["/og-instalacion.jpg"],
+  },
+  twitter: {
+    title: "Instalación de Spline en Next.js - Guía Paso a Paso",
+    description: "Aprende cómo instalar Spline y configurar tu proyecto Next.js paso a paso. Guía completa con comandos y estructura de proyecto.",
+    images: ["/og-instalacion.jpg"],
+  },
+};
 
 export default function InstalacionSpline() {
   const pasosInstalacion = [
@@ -33,24 +52,12 @@ cd mi-proyecto-spline`,
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="mb-8">
-          <Link 
-            href="/guia-spline" 
-            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Volver a la guía
-          </Link>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Paso 1: Instalación y Configuración
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Configura tu entorno de desarrollo para trabajar con Spline en Next.js
-          </p>
-        </div>
+    <div className="relative min-h-screen">
+      <PageLayout>
+        <PageHeader 
+          title="Paso 1: Instalación y Configuración"
+          description="Configura tu entorno de desarrollo para trabajar con Spline en Next.js"
+        />
 
         {/* Pasos de instalación */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
@@ -132,22 +139,13 @@ NEXT_PUBLIC_SPLINE_SCENE_URL=/scene.splinecode`}</code>
           </div>
         </div>
 
-        {/* Navegación */}
-        <div className="flex justify-between items-center">
-          <Link 
-            href="/guia-spline" 
-            className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-          >
-            Anterior
-          </Link>
-          <Link 
-            href="/guia-spline/implementacion" 
-            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-cyan-500 text-white rounded-lg hover:from-pink-600 hover:to-cyan-600 transition-all shadow-lg"
-          >
-            Siguiente: Implementación Básica
-          </Link>
-        </div>
-      </div>
+        <PageNavigation 
+          previousHref="/guia-spline"
+          previousText="Anterior"
+          nextHref="/guia-spline/implementacion"
+          nextText="Siguiente: Implementación Básica"
+        />
+      </PageLayout>
     </div>
   );
 }
