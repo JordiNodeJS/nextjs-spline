@@ -137,16 +137,16 @@ export default function Home() {
             <div className="min-h-screen flex flex-col justify-center lg:w-1/2 lg:pr-8 pointer-events-auto">
               {/* Badge - Top Left */}
               <div className="mb-8 sm:mb-10">
-                <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-white/90 to-white/70 dark:from-black/80 dark:to-black/60 backdrop-blur-xl rounded-full border border-white/40 dark:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-linear-to-r from-white/90 to-white/70 dark:from-black/80 dark:to-black/60 backdrop-blur-xl rounded-full border border-white/40 dark:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 animate-pulse" />
-                  <span className="text-sm sm:text-base font-semibold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                  <span className="text-sm sm:text-base font-semibold bg-linear-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                     Guía Completa y Gratuita
                   </span>
                 </div>
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 sm:mb-8 leading-tight">
-                <span className="inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                <span className="inline-block bg-linear-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
                   Guía Spline
                 </span>
               </h1>
@@ -168,7 +168,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-12 sm:mb-16">
                 <Link
                   href="/guia-spline"
-                  className="group flex h-14 sm:h-16 w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 px-8 sm:px-10 text-white font-bold text-base sm:text-lg transition-all hover:shadow-2xl hover:shadow-pink-500/50 hover:scale-105 active:scale-95"
+                  className="group flex h-14 sm:h-16 w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-pink-500 via-purple-500 to-cyan-500 px-8 sm:px-10 text-white font-bold text-base sm:text-lg transition-all hover:shadow-2xl hover:shadow-pink-500/50 hover:scale-105 active:scale-95"
                 >
                   <BookOpen className="w-6 h-6" />
                   Comenzar Guía
@@ -192,17 +192,17 @@ export default function Home() {
                     className="group relative overflow-hidden bg-white/80 dark:bg-black/60 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/40 dark:border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1"
                   >
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                      className={`absolute inset-0 bg-linear-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
                     ></div>
                     <div className="relative z-10 text-center">
                       <div
-                        className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
+                        className={`w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
                       >
                         <div className="text-white scale-75 sm:scale-100">
                           {stat.icono}
                         </div>
                       </div>
-                      <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-1">
+                      <div className="text-2xl sm:text-3xl font-bold bg-linear-to-br from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-1">
                         {stat.numero}
                       </div>
                       <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -235,7 +235,7 @@ export default function Home() {
                     className="group relative overflow-hidden bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border border-white/40 dark:border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2"
                   >
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${caracteristica.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                      className={`absolute inset-0 bg-linear-to-br ${caracteristica.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                     ></div>
                     <div className="relative z-10">
                       <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
@@ -255,8 +255,8 @@ export default function Home() {
 
             {/* Final CTA */}
             <div className="max-w-4xl mx-auto pointer-events-auto">
-              <div className="relative overflow-hidden bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 dark:from-pink-500/10 dark:via-purple-500/10 dark:to-cyan-500/10 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] p-8 sm:p-12 border border-white/40 dark:border-white/20 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-purple-500/5 to-cyan-500/5 animate-gradient bg-[length:200%_200%]"></div>
+              <div className="relative overflow-hidden bg-linear-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 dark:from-pink-500/10 dark:via-purple-500/10 dark:to-cyan-500/10 backdrop-blur-xl rounded-3xl sm:rounded-4xl p-8 sm:p-12 border border-white/40 dark:border-white/20 shadow-2xl">
+                <div className="absolute inset-0 bg-linear-to-br from-pink-500/5 via-purple-500/5 to-cyan-500/5 animate-gradient bg-size-[200%_200%]"></div>
                 <div className="relative z-10 text-center">
                   <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4 sm:mb-6">
                     ¿Listo para Crear Experiencias 3D?
@@ -270,7 +270,7 @@ export default function Home() {
                   </p>
                   <Link
                     href="/guia-spline"
-                    className="group inline-flex items-center gap-3 h-14 sm:h-16 px-8 sm:px-10 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-base sm:text-lg transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 active:scale-95"
+                    className="group inline-flex items-center gap-3 h-14 sm:h-16 px-8 sm:px-10 rounded-2xl bg-linear-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-base sm:text-lg transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 active:scale-95"
                   >
                     <Users className="w-6 h-6" />
                     Comenzar Ahora
