@@ -11,6 +11,7 @@ import {
   type SplineContainer,
   type SplineScale
 } from '@/lib/spline-styles';
+import { DEFAULT_SPLINE_SCENE } from '@/lib/spline-paths';
 
 interface SplineBackgroundProps {
   scene?: string;
@@ -25,7 +26,7 @@ interface SplineBackgroundProps {
 }
 
 export default function SplineBackground({ 
-  scene = "/scene.splinecode", 
+  scene = DEFAULT_SPLINE_SCENE, 
   className = "",
   style,
   preset = 'BACKGROUND',

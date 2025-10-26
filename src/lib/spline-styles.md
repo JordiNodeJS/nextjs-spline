@@ -5,6 +5,7 @@
 ### Con Presets (Recomendado)
 ```tsx
 import SplineBackground from '@/components/SplineBackground';
+import { SPLINE_SCENES } from '@/lib/spline-paths';
 
 // Fondo de pantalla completa
 <SplineBackground preset="BACKGROUND" />
@@ -46,6 +47,23 @@ import SplineBackground from '@/components/SplineBackground';
     transform: 'translate(100px, -75px)'
   }}
 />
+```
+
+### Rutas Centralizadas de Escenas
+```tsx
+import { SPLINE_SCENES, getSplineScene, getCustomSplineScene } from '@/lib/spline-paths';
+
+// Usar escenas predefinidas
+<SplineBackground scene={SPLINE_SCENES.MAIN} />
+<SplineBackground scene={SPLINE_SCENES.SCENE_1} />
+<SplineBackground scene={SPLINE_SCENES.HERO} />
+
+// Usar función helper
+<SplineBackground scene={getSplineScene('MAIN')} />
+
+// Rutas personalizadas (automáticamente agrega /scenes/ si es necesario)
+<SplineBackground scene={getCustomSplineScene('mi-escena.splinecode')} />
+<SplineBackground scene={getCustomSplineScene('/custom/path/escena.splinecode')} />
 ```
 
 ## 📍 Posiciones Disponibles
@@ -195,7 +213,7 @@ import SplineBackground from '@/components/SplineBackground';
       transform: "scale(1.1)",
     }}
   >
-    <Spline scene="/scene.splinecode" />
+    <Spline scene="/scenes/scene.splinecode" />
   </div>
 </div>
 ```
@@ -203,7 +221,7 @@ import SplineBackground from '@/components/SplineBackground';
 ### Después (Sistema unificado básico)
 ```tsx
 <SplineBackground 
-  scene="/scene.splinecode"
+  scene="/scenes/scene.splinecode"
   preset="BACKGROUND"
 />
 ```
@@ -211,7 +229,7 @@ import SplineBackground from '@/components/SplineBackground';
 ### Después (Sistema unificado con desplazamiento responsive)
 ```tsx
 <SplineBackground 
-  scene="/scene.splinecode"
+  scene="/scenes/scene.splinecode"
   preset="BACKGROUND_RESPONSIVE"
 />
 ```

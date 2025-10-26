@@ -311,8 +311,9 @@ className="focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset
 
 ### Uso del Componente SplineBackground
 ```typescript
-// ✅ CORRECTO: Importar el componente unificado
+// ✅ CORRECTO: Importar el componente unificado y las rutas
 import SplineBackground from '@/components/SplineBackground'
+import { SPLINE_SCENES } from '@/lib/spline-paths'
 
 // ✅ CORRECTO: Usar presets predefinidos
 <SplineBackground preset="BACKGROUND" />
@@ -320,6 +321,11 @@ import SplineBackground from '@/components/SplineBackground'
 <SplineBackground preset="HERO" />
 <SplineBackground preset="SIDEBAR" />
 <SplineBackground preset="MODAL" />
+
+// ✅ CORRECTO: Usar rutas centralizadas
+<SplineBackground scene={SPLINE_SCENES.MAIN} />
+<SplineBackground scene={SPLINE_SCENES.SCENE_1} />
+<SplineBackground scene={SPLINE_SCENES.HERO} />
 ```
 
 ### Presets Disponibles
@@ -328,6 +334,23 @@ import SplineBackground from '@/components/SplineBackground'
 - **HERO**: Centrado para secciones hero
 - **SIDEBAR**: Pequeño para sidebars
 - **MODAL**: Centrado para modales
+
+### Rutas Centralizadas de Escenas
+```typescript
+// ✅ CORRECTO: Importar rutas centralizadas
+import { SPLINE_SCENES, getSplineScene, getCustomSplineScene } from '@/lib/spline-paths'
+
+// ✅ CORRECTO: Usar escenas predefinidas
+<SplineBackground scene={SPLINE_SCENES.MAIN} />
+<SplineBackground scene={SPLINE_SCENES.SCENE_1} />
+<SplineBackground scene={SPLINE_SCENES.HERO} />
+
+// ✅ CORRECTO: Usar función helper
+<SplineBackground scene={getSplineScene('MAIN')} />
+
+// ✅ CORRECTO: Rutas personalizadas (automáticamente agrega /scenes/)
+<SplineBackground scene={getCustomSplineScene('mi-escena.splinecode')} />
+```
 
 ### Configuración Personalizada
 ```typescript
@@ -384,6 +407,7 @@ import SplineBackground from '@/components/SplineBackground'
 - Preferir presets sobre configuración manual cuando sea posible
 - Usar `preset="BACKGROUND_RESPONSIVE"` para fondos que necesiten desplazamiento responsive
 - Importar desde `@/components/SplineBackground`
+- Usar rutas centralizadas desde `@/lib/spline-paths`
 - Usar TypeScript con los tipos definidos en `@/lib/spline-styles`
 
 #### ❌ NUNCA HACER:

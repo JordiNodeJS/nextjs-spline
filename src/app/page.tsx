@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SplineBackground from "@/components/SplineBackground";
+import { SPLINE_SCENES } from "@/lib/spline-paths";
 import {
   ArrowRight,
   BookOpen,
@@ -119,7 +120,7 @@ export default function Home() {
       <div className="relative min-h-screen">
         {/* Spline scene - Full viewport background */}
         <SplineBackground 
-          scene="/scene.splinecode"
+          scene={SPLINE_SCENES.MAIN}
           preset="BACKGROUND_RESPONSIVE"
         />
 
@@ -131,8 +132,8 @@ export default function Home() {
         </div>
 
         {/* Gradient overlays for better contrast on left side */}
-        <div className="fixed inset-0 z-[1] pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-white/10 dark:from-black/80 dark:via-black/50 dark:to-black/20 lg:from-white/85 lg:via-white/50 lg:to-transparent dark:lg:from-black/95 dark:lg:via-black/60 dark:lg:to-transparent"></div>
+        <div className="fixed inset-0 z-1 pointer-events-none">
+          <div className="absolute inset-0 bg-linear-to-r from-white/70 via-white/40 to-white/10 dark:from-black/80 dark:via-black/50 dark:to-black/20 lg:from-white/85 lg:via-white/50 lg:to-transparent dark:lg:from-black/95 dark:lg:via-black/60 dark:lg:to-transparent"></div>
         </div>
 
         {/* Content layer */}

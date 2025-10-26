@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@/components/Analytics";
+import { SPLINE_SCENES } from "@/lib/spline-paths";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,7 +110,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://cdn.splinetool.com" />
-        <link rel="preload" href="/scene.splinecode" as="fetch" />
+        <link rel="preload" href={SPLINE_SCENES.MAIN} as="fetch" />
         <meta name="theme-color" content="#0A0A0A" />
         <meta name="color-scheme" content="light dark" />
       </head>
