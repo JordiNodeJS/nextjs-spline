@@ -1,0 +1,271 @@
+---
+description: Reglas específicas para desarrollo con Next.js 16, React 19 y TypeScript en este proyecto
+globs: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx']
+alwaysApply: true
+priority: high
+---
+
+# Reglas para Next.js 16 Development
+
+## Tecnologías del Proyecto
+- **Next.js**: 16.0.0
+- **React**: 19.2.0
+- **TypeScript**: 5
+- **TailwindCSS**: 4
+- **Gestor de paquetes**: pnpm (NUNCA usar npm)
+
+## Arquitectura App Router
+
+### Estructura de Directorios
+- **SIEMPRE** usar el directorio `app/` para rutas, nunca `pages/`
+- **SIEMPRE** crear `layout.tsx` para UI compartida entre rutas
+- **SIEMPRE** usar `page.tsx` para componentes de ruta
+- **SIEMPRE** usar `loading.tsx` para estados de carga
+- **SIEMPRE** usar `error.tsx` para límites de error
+- **SIEMPRE** usar `not-found.tsx` para páginas 404
+
+### Componentes Server vs Client
+- **POR DEFECTO** usar Server Components (sin directiva 'use client')
+- **SOLO** agregar 'use client' cuando necesites:
+  - APIs del navegador (localStorage, window, document)
+  - Manejadores de eventos (onClick, onChange)
+  - Hooks de React (useState, useEffect, etc.)
+  - Librerías de terceros que requieran ejecución del lado del cliente
+
+## Patrones de Obtención de Datos
+
+```typescript
+// ✅ CORRECTO: Server Component con obtención de datos async
+export default async function Page() {
+  const data = await fetch('https://api.example.com/data', {
+    cache: 'force-cache' // Datos estáticos
+    // cache: 'no-store' // Datos dinámicos
+    // next: { revalidate: 60 } // ISR
+  })
+  
+  return <div>{/* renderizar datos */}</div>
+}
+
+// ❌ INCORRECTO: No usar getServerSideProps o getStaticProps en App Router
+```
+
+## API de Metadata
+
+```typescript
+// ✅ CORRECTO: Usar Metadata API en lugar de next/head
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Título de la Página',
+  description: 'Descripción de la página',
+  openGraph: {
+    title: 'Título de la Página',
+    description: 'Descripción de la página',
+  },
+}
+```
+
+## Navegación y Enrutamiento
+
+```typescript
+// ✅ CORRECTO: Usar hooks de next/navigation en Client Components
+'use client'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+// ✅ CORRECTO: Usar componente Link para navegación
+import Link from 'next/link'
+<Link href="/dashboard">Dashboard</Link>
+```
+
+## Rutas API (Route Handlers)
+
+```typescript
+// ✅ CORRECTO: Usar archivos route.ts en app/api/
+// app/api/users/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(request: NextRequest) {
+  return NextResponse.json({ users: [] })
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json()
+  return NextResponse.json({ success: true })
+}
+```
+
+## Patrones de TypeScript
+
+### Definición de Tipos
+```typescript
+// ✅ CORRECTO: Definir interfaces para props
+interface PageProps {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export default async function Page({ params, searchParams }: PageProps) {
+  const resolvedParams = await params
+  const resolvedSearchParams = await searchParams
+  // ...
+}
+```
+
+### Tipos de Metadata
+```typescript
+// ✅ CORRECTO: Usar tipo Metadata apropiado
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Título de la Página',
+  description: 'Descripción de la página',
+}
+```
+
+## Gestión de Paquetes
+
+### Comandos de pnpm
+- **SIEMPRE** usar `pnpm` para gestión de paquetes
+- **SIEMPRE** usar `pnpm dlx` para comandos únicos
+- **NUNCA** usar `npm` o `yarn`
+
+```bash
+# Desarrollo
+pnpm dev
+
+# Construcción
+pnpm build
+
+# Iniciar producción
+pnpm start
+
+# Linting
+pnpm lint
+
+# Instalar dependencias
+pnpm install
+
+# Agregar dependencia
+pnpm add [paquete]
+
+# Agregar dependencia de desarrollo
+pnpm add -D [paquete]
+
+# Ejecutar comando único
+pnpm dlx [comando]
+```
+
+## Commits de Git
+- **SIEMPRE** escribir mensajes de commit en inglés
+- **SIEMPRE** usar formato de commit convencional cuando sea posible
+
+## Patrones a Evitar
+
+### ❌ NO HACER:
+- Usar `getServerSideProps` o `getStaticProps` en App Router
+- Usar `next/head` en App Router (usar Metadata API en su lugar)
+- Usar `useRouter` de `next/router` (usar `next/navigation` en su lugar)
+- Mezclar patrones de Server y Client Components incorrectamente
+- Usar directiva `@apply` en TailwindCSS 4
+- Usar `npm` en lugar de `pnpm`
+
+### ✅ HACER EN SU LUGAR:
+- Usar Server Components async para obtención de datos
+- Usar Metadata API para SEO y gestión de head
+- Usar hooks de `next/navigation` en Client Components
+- Separar claramente las preocupaciones de Server y Client Components
+- Usar clases de utilidad directamente en TailwindCSS 4
+- Siempre usar `pnpm` para gestión de paquetes
+
+## Optimización de Rendimiento
+
+### Optimización de Imágenes
+```typescript
+// ✅ CORRECTO: Usar componente Image de Next.js
+import Image from 'next/image'
+
+<Image
+  src="/image.jpg"
+  alt="Descripción"
+  width={500}
+  height={300}
+  priority={false} // Solo true para imágenes above-the-fold
+/>
+```
+
+### Optimización de Fuentes
+```typescript
+// ✅ CORRECTO: Usar next/font/google
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  )
+}
+```
+
+## Manejo de Errores
+
+### Límites de Error
+```typescript
+// ✅ CORRECTO: Crear archivos error.tsx
+'use client'
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  return (
+    <div>
+      <h2>¡Algo salió mal!</h2>
+      <button onClick={() => reset()}>Intentar de nuevo</button>
+    </div>
+  )
+}
+```
+
+### Estados de Carga
+```typescript
+// ✅ CORRECTO: Crear archivos loading.tsx
+export default function Loading() {
+  return <div>Cargando...</div>
+}
+```
+
+## Reglas de Seguridad
+
+### Variables de Entorno
+- **SIEMPRE** prefijar variables del lado del cliente con `NEXT_PUBLIC_`
+- **SIEMPRE** validar variables de entorno
+- **NUNCA** exponer datos sensibles al cliente
+
+### Content Security Policy
+```typescript
+// ✅ CORRECTO: Usar nonces para CSP
+import { headers } from 'next/headers'
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = (await headers()).get('x-nonce')
+  
+  return (
+    <html>
+      <body>
+        {children}
+        <script nonce={nonce}>/* script inline */</script>
+      </body>
+    </html>
+  )
+}
+```
+
+---
+
+**Recordatorio**: Este proyecto usa **Next.js 16** con **React 19** y **App Router**. Siempre seguir patrones modernos y evitar APIs deprecadas.

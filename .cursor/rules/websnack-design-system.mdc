@@ -1,0 +1,310 @@
+---
+description: Sistema de diseño WebSnack con colores específicos, patrones de diseño y integración Spline
+globs: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.css']
+alwaysApply: true
+priority: high
+---
+
+# Sistema de Diseño WebSnack
+
+## Paleta de Colores (DEFINITIVA)
+- **Primary (Rosa)**: `#dc7cb3` - Color principal de la marca
+- **Secondary (Aguamarina)**: `#82c8d2` - Color secundario complementario  
+- **Accent (Púrpura)**: `#9333ea` - Color de acento para elementos destacados
+
+### Clases de Colores TailwindCSS
+```css
+/* Colores Primarios */
+bg-pink-500, text-pink-500, border-pink-500
+from-pink-500, to-pink-600
+
+/* Colores Secundarios */
+bg-cyan-500, text-cyan-500, border-cyan-500
+from-cyan-500, to-cyan-600
+
+/* Colores de Acento */
+bg-purple-500, text-purple-500, border-purple-500
+from-purple-500, to-purple-600
+
+/* Combinaciones de Gradientes */
+from-pink-500 to-cyan-500
+from-pink-500 via-purple-500 to-cyan-500
+```
+
+## Patrones de Diseño
+
+### Gradientes Animados
+```typescript
+// ✅ CORRECTO: Usar gradientes animados
+className="bg-gradient-to-r from-pink-500 to-cyan-500 animate-gradient-x"
+
+// ✅ CORRECTO: Gradientes complejos
+className="bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500"
+```
+
+### Sombras 3D Personalizadas
+```css
+/* Usar estas clases de sombra */
+shadow-3d-sm    /* Sombra 3D pequeña */
+shadow-3d-md    /* Sombra 3D mediana */
+shadow-3d-lg    /* Sombra 3D grande */
+shadow-3d-xl    /* Sombra 3D extra grande */
+```
+
+### Efectos Glassmorphism
+```typescript
+// ✅ CORRECTO: Patrón glassmorphism
+className="backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10"
+```
+
+### Bordes Redondeados Consistentes
+```typescript
+// ✅ CORRECTO: Radio de borde consistente
+className="rounded-xl"     /* Redondeado estándar */
+className="rounded-2xl"    /* Redondeado grande */
+className="rounded-full"   /* Redondeado completo para botones */
+```
+
+## Reglas de Tipografía
+
+### Pesos de Fuente
+- **Títulos**: `font-bold` (700)
+- **Subtítulos**: `font-semibold` (600)
+- **Texto del cuerpo**: `font-medium` (500)
+- **Subtítulos**: `font-normal` (400)
+
+### Tamaños de Texto
+```typescript
+// ✅ CORRECTO: Tamaños de texto consistentes
+className="text-5xl font-bold"      /* Títulos principales */
+className="text-3xl font-semibold" /* Títulos de sección */
+className="text-xl font-medium"    /* Texto del cuerpo */
+className="text-lg font-medium"    /* Texto del cuerpo grande */
+```
+
+## Integración Spline
+
+### Uso del Componente Spline
+```typescript
+// ✅ CORRECTO: Importar Spline para Next.js
+import Spline from '@splinetool/react-spline/next'
+
+// ✅ CORRECTO: Uso básico
+<Spline scene="/scene.splinecode" />
+
+// ✅ CORRECTO: Con estilos personalizados
+<div className="w-full h-screen">
+  <Spline scene="/scene.splinecode" />
+</div>
+```
+
+### Posicionamiento y Layout de Spline
+```typescript
+// ✅ CORRECTO: Spline de fondo fijo
+<div className="fixed inset-0 z-0 overflow-hidden">
+  <div 
+    className="absolute w-[150%] h-[150%]"
+    style={{
+      top: '-25%',
+      right: '-25%',
+      transform: 'translate(50px, -50px)'
+    }}
+  >
+    <Spline scene="/scene.splinecode" />
+  </div>
+</div>
+
+// ✅ CORRECTO: Capa de contenido encima
+<div className="relative z-10">
+  {/* Tu contenido aquí */}
+</div>
+```
+
+### Optimización de Rendimiento de Spline
+```typescript
+// ✅ CORRECTO: Carga diferida para Spline
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+
+const SplineScene = dynamic(() => import('./SplineScene'), {
+  loading: () => <div className="animate-pulse bg-gray-200 rounded-lg h-96" />,
+  ssr: false
+})
+
+// ✅ CORRECTO: Renderizado condicional
+{isClient && <Spline scene="/scene.splinecode" />}
+```
+
+## Patrones de Componentes
+
+### Componentes de Botón
+```typescript
+// ✅ CORRECTO: Botón primario
+<button className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-cyan-500 px-5 text-white transition-all hover:from-pink-600 hover:to-cyan-600 hover:shadow-lg md:w-[200px]">
+  Texto del Botón
+</button>
+
+// ✅ CORRECTO: Botón secundario
+<button className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]">
+  Secundario
+</button>
+```
+
+### Componentes de Tarjeta
+```typescript
+// ✅ CORRECTO: Tarjeta de característica
+<div className="group p-8 rounded-2xl border-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800">
+  {/* Contenido de la tarjeta */}
+</div>
+```
+
+### Componentes de Navegación
+```typescript
+// ✅ CORRECTO: Enlace de navegación
+<Link
+  href="/ruta"
+  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-cyan-500 px-5 text-white transition-all hover:from-pink-600 hover:to-cyan-600 hover:shadow-lg md:w-[200px]"
+>
+  📚 Texto de Navegación
+</Link>
+```
+
+## Soporte de Modo Oscuro
+
+### Variantes de Color
+```typescript
+// ✅ CORRECTO: Colores de modo oscuro
+className="bg-pink-50 dark:bg-pink-950/20"
+className="border-pink-200 dark:border-pink-800"
+className="text-pink-700 dark:text-pink-300"
+```
+
+### Patrones de Fondo
+```typescript
+// ✅ CORRECTO: Fondos de modo oscuro
+className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
+className="bg-white dark:bg-gray-800"
+```
+
+## Reglas de Animación
+
+### Efectos de Hover
+```typescript
+// ✅ CORRECTO: Animaciones de hover consistentes
+className="transition-all duration-300 hover:shadow-2xl hover:scale-105"
+className="transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
+```
+
+### Estados de Carga
+```typescript
+// ✅ CORRECTO: Animaciones de carga
+className="animate-pulse bg-gray-200 rounded-lg"
+className="animate-gradient-x" // Para animaciones de gradiente
+```
+
+## Patrones de Layout
+
+### Layouts de Contenedor
+```typescript
+// ✅ CORRECTO: Contenedor principal
+<div className="container mx-auto px-4 py-16">
+  {/* Contenido */}
+</div>
+
+// ✅ CORRECTO: Layout de pantalla completa
+<div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+  {/* Contenido */}
+</div>
+```
+
+### Layouts de Grid
+```typescript
+// ✅ CORRECTO: Grid responsivo
+<div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+  {/* Elementos del grid */}
+</div>
+```
+
+## Uso de Iconos
+
+### Iconos de Lucide React
+```typescript
+// ✅ CORRECTO: Importación y uso de iconos
+import { ArrowRight, BookOpen, Code, Palette, Zap } from "lucide-react"
+
+// ✅ CORRECTO: Icono con color
+<Zap className="w-8 h-8 text-pink-500" />
+<Code className="w-8 h-8 text-cyan-500" />
+<Palette className="w-8 h-8 text-purple-500" />
+```
+
+## Diseño Responsivo
+
+### Uso de Breakpoints
+```typescript
+// ✅ CORRECTO: Diseño responsivo mobile-first
+className="text-center sm:text-left"
+className="flex-col sm:flex-row"
+className="w-full md:w-[200px]"
+className="items-center sm:items-start"
+```
+
+### Patrones de Espaciado
+```typescript
+// ✅ CORRECTO: Espaciado consistente
+className="py-16"     /* Padding de sección */
+className="mb-16"     /* Margen de sección */
+className="gap-8"     /* Espacios de grid */
+className="px-4"      /* Padding de contenedor */
+```
+
+## Reglas de Accesibilidad
+
+### Contraste de Color
+- **SIEMPRE** asegurar contraste suficiente entre texto y fondos
+- **SIEMPRE** proporcionar texto alternativo para imágenes e iconos
+- **SIEMPRE** usar elementos HTML semánticos
+
+### Estados de Enfoque
+```typescript
+// ✅ CORRECTO: Estados de enfoque
+className="focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+```
+
+## Patrones a Evitar
+
+### ❌ NO HACER:
+- Usar esquemas de color inconsistentes
+- Mezclar diferentes patrones de diseño
+- Usar colores codificados en lugar de la paleta definida
+- Ignorar el soporte de modo oscuro
+- Usar patrones de carga de Spline ineficientes
+
+### ✅ HACER EN SU LUGAR:
+- Usar la paleta de colores definida consistentemente
+- Seguir los patrones de diseño establecidos
+- Implementar soporte de modo oscuro apropiado
+- Optimizar el rendimiento de Spline
+- Mantener la coherencia del sistema de diseño
+
+---
+
+## Referencia Rápida
+
+### Paleta de Colores
+- Primario: `#dc7cb3` (pink-500)
+- Secundario: `#82c8d2` (cyan-500)  
+- Acento: `#9333ea` (purple-500)
+
+### Clases Comunes
+- Gradientes: `from-pink-500 to-cyan-500`
+- Sombras: `shadow-3d-md`
+- Redondeado: `rounded-2xl`
+- Transiciones: `transition-all duration-300`
+
+### Integración Spline
+- Importar: `import Spline from '@splinetool/react-spline/next'`
+- Uso: `<Spline scene="/scene.splinecode" />`
+- Rendimiento: Usar carga diferida y renderizado condicional
+
+**Recordatorio**: Mantener **COHERENCIA COMPLETA DEL SISTEMA DE DISEÑO** en todo momento. Cada componente debe seguir estos patrones establecidos y usar la paleta de colores definida.
