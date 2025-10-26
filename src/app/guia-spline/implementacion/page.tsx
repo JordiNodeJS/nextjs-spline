@@ -243,7 +243,7 @@ export default function LandingWebCode() {
           {ejemplosCodigo.map((ejemplo, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg overflow-hidden"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div
@@ -257,7 +257,7 @@ export default function LandingWebCode() {
                 >
                   <Code className="w-6 h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {ejemplo.titulo}
                   </h3>
@@ -274,7 +274,9 @@ export default function LandingWebCode() {
                       Ver Demo Funcional
                     </Link>
                   )}
-                  <CodeBlock code={ejemplo.codigo} language="tsx" />
+                  <div className="w-full overflow-hidden">
+                    <CodeBlock code={ejemplo.codigo} language="tsx" />
+                  </div>
                 </div>
               </div>
             </div>

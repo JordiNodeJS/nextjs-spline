@@ -25,7 +25,7 @@ export default function CodeBlock({
   };
 
   return (
-    <div className={`relative bg-gray-900 rounded-lg overflow-hidden ${className}`}>
+    <div className={`relative bg-gray-900 rounded-lg overflow-hidden w-full ${className}`}>
       {showCopyButton && (
         <button 
           className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors z-10"
@@ -43,17 +43,19 @@ export default function CodeBlock({
       >
         {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre 
-            className={`${highlightClassName} p-6 text-sm overflow-auto font-mono max-h-96`} 
+            className={`${highlightClassName} p-6 text-sm overflow-auto font-mono max-h-96 w-full`} 
             style={{
               ...style,
               backgroundColor: '#1e1e1e',
               color: '#d4d4d4',
               fontSize: '14px',
               lineHeight: '1.5',
+              maxWidth: '100%',
+              wordBreak: 'break-word',
             }}
           >
             {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
+              <div key={i} {...getLineProps({ line })} className="whitespace-pre-wrap break-words">
                 {line.map((token, key) => (
                   <span 
                     key={key} 
