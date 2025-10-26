@@ -27,8 +27,8 @@ body {
 
 /* Estilos para mover el logo de Spline hacia la derecha y arriba */
 canvas {
-  transform: translate(clamp(50px, 8vw, 150px), clamp(-150px, -12vh, -50px));
+  transform: translate(clamp(80px, 12vw, 200px), clamp(-150px, -12vh, -50px));
   position: relative;
   top: clamp(-80px, -6vh, -30px);
-  left: clamp(100px, 15vw, 400px);
+  left: clamp(150px, 20vw, 500px);
 }
