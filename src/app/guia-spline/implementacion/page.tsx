@@ -1,7 +1,8 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowLeft, Code, Copy, Play, Zap } from "lucide-react";
+import { ArrowLeft, Code, Play, Zap } from "lucide-react";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function ImplementacionSpline() {
   const ejemplosCodigo = [
@@ -143,17 +144,10 @@ export default function PaginaConFondo() {
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {ejemplo.descripcion}
                   </p>
-                  <div className="bg-gray-900 rounded-lg p-6 relative">
-                    <button 
-                      className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
-                      onClick={() => navigator.clipboard.writeText(ejemplo.codigo)}
-                    >
-                      <Copy className="w-4 h-4" />
-                    </button>
-                    <pre className="text-green-400 text-sm overflow-x-auto">
-                      <code>{ejemplo.codigo}</code>
-                    </pre>
-                  </div>
+                  <CodeBlock 
+                    code={ejemplo.codigo} 
+                    language="tsx"
+                  />
                 </div>
               </div>
             </div>

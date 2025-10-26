@@ -1,7 +1,8 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Code, Copy, Lightbulb, Gauge, Shield, Zap } from "lucide-react";
+import { ArrowLeft, CheckCircle, Code, Lightbulb, Gauge, Shield, Zap } from "lucide-react";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function MejoresPracticasSpline() {
   const mejoresPracticas = [
@@ -271,17 +272,11 @@ export default function App() {
                       {item.descripcion}
                     </p>
                     {item.codigo && (
-                      <div className="bg-gray-900 rounded-lg p-4 relative">
-                        <button 
-                          className="absolute top-2 right-2 p-2 text-gray-400 hover:text-white transition-colors"
-                          onClick={() => navigator.clipboard.writeText(item.codigo)}
-                        >
-                          <Copy className="w-4 h-4" />
-                        </button>
-                        <pre className="text-green-400 text-sm overflow-x-auto">
-                          <code>{item.codigo}</code>
-                        </pre>
-                      </div>
+                      <CodeBlock 
+                        code={item.codigo} 
+                        language="tsx"
+                        className="mt-4"
+                      />
                     )}
                   </div>
                 ))}

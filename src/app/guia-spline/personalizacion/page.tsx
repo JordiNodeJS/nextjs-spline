@@ -1,7 +1,8 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowLeft, Code, Copy, Move, Palette, Smartphone, Monitor } from "lucide-react";
+import { ArrowLeft, Move, Palette, Smartphone, Monitor } from "lucide-react";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function PersonalizacionSpline() {
   const tecnicasPosicionamiento = [
@@ -180,7 +181,7 @@ export default function Modal3D() {
           </p>
           <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
             <p className="text-sm text-yellow-800 dark:text-yellow-200">
-              <strong>Nota:</strong> Esta página usa <code className="bg-yellow-100 dark:bg-yellow-900/50 px-1 rounded">'use client'</code> para habilitar la interactividad de los botones de copiar código.
+              <strong>Nota:</strong> Esta página usa <code className="bg-yellow-100 dark:bg-yellow-900/50 px-1 rounded">&apos;use client&apos;</code> para habilitar la interactividad de los botones de copiar código.
             </p>
           </div>
         </div>
@@ -200,17 +201,10 @@ export default function Modal3D() {
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
                     {tecnica.descripcion}
                   </p>
-                  <div className="bg-gray-900 rounded-lg p-6 relative">
-                    <button 
-                      className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
-                      onClick={() => navigator.clipboard.writeText(tecnica.codigo)}
-                    >
-                      <Copy className="w-4 h-4" />
-                    </button>
-                    <pre className="text-green-400 text-sm overflow-x-auto">
-                      <code>{tecnica.codigo}</code>
-                    </pre>
-                  </div>
+                  <CodeBlock 
+                    code={tecnica.codigo} 
+                    language="css"
+                  />
                 </div>
               </div>
             </div>
@@ -229,17 +223,10 @@ export default function Modal3D() {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   {ejemplo.titulo}
                 </h3>
-                <div className="bg-gray-900 rounded-lg p-6 relative">
-                  <button 
-                    className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
-                    onClick={() => navigator.clipboard.writeText(ejemplo.codigo)}
-                  >
-                    <Copy className="w-4 h-4" />
-                  </button>
-                  <pre className="text-green-400 text-sm overflow-x-auto">
-                    <code>{ejemplo.codigo}</code>
-                  </pre>
-                </div>
+                <CodeBlock 
+                  code={ejemplo.codigo} 
+                  language="tsx"
+                />
               </div>
             ))}
           </div>
