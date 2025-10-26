@@ -266,6 +266,11 @@ export default function Modal3D() {
               <p className="text-gray-600 dark:text-gray-300">
                 Usa el nuevo sistema centralizado para mantener consistencia y facilitar el mantenimiento
               </p>
+              <div className="mt-3 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                <p className="text-sm text-green-800 dark:text-green-200">
+                  <strong>✨ Nuevo:</strong> Desplazamiento responsive automático hacia la derecha según el tamaño de pantalla
+                </p>
+              </div>
             </div>
           </div>
           
@@ -280,6 +285,9 @@ export default function Modal3D() {
 
 // Fondo de pantalla completa
 <SplineBackground preset="BACKGROUND" />
+
+// Fondo responsive (se desplaza hacia la derecha según el tamaño de pantalla)
+<SplineBackground preset="BACKGROUND_RESPONSIVE" />
 
 // Hero section centrado
 <SplineBackground preset="HERO" />
@@ -301,7 +309,7 @@ export default function Modal3D() {
                 code={`// Cambiar solo la posición
 <SplineBackground 
   preset="BACKGROUND"
-  position="TOP_LEFT"
+  position="RESPONSIVE_RIGHT"  // Nueva posición responsive
 />
 
 // Cambiar tamaño y escala
@@ -311,13 +319,39 @@ export default function Modal3D() {
   scale="EXTRA_LARGE"
 />
 
-// Posición completamente personalizada
+// Posición completamente personalizada con valores actualizados
 <SplineBackground 
   preset="BACKGROUND"
   customPosition={{
-    top: '-30%',
-    right: '-20%',
-    transform: 'translate(100px, -75px)'
+    top: '-30%',  // Mejorado desde -25%
+    right: 'clamp(-35%, -8vw, -38%)',  // Desplazamiento responsive optimizado
+    transform: 'translate(clamp(50px, 10vw, 200px), -50px)'
+  }}
+/>`}
+              />
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                Desplazamiento Responsive (Nuevo)
+              </h4>
+              <CodeBlock 
+                language="tsx"
+                code={`// Usar el preset responsive (Recomendado)
+<SplineBackground preset="BACKGROUND_RESPONSIVE" />
+
+// Comportamiento por pantalla:
+// 📱 Móvil: right: -35%, translate(50px, -50px)
+// 📱 Tablet: right: -8vw, translate(10vw, -50px)  
+// 💻 Desktop: right: -38%, translate(200px, -50px)
+
+// Personalización avanzada responsive
+<SplineBackground 
+  preset="BACKGROUND"
+  customPosition={{
+    top: '-30%',  // Posición vertical optimizada
+    right: 'clamp(-35%, -8vw, -38%)',  // Desplazamiento responsive
+    transform: 'translate(clamp(50px, 10vw, 200px), -50px)'
   }}
 />`}
               />
@@ -331,8 +365,10 @@ export default function Modal3D() {
                 <li><strong>Consistencia:</strong> Todos los estilos Spline siguen el mismo patrón</li>
                 <li><strong>Mantenibilidad:</strong> Cambios centralizados en un solo archivo</li>
                 <li><strong>Flexibilidad:</strong> Presets + overrides + customización</li>
+                <li><strong>Responsive:</strong> Desplazamiento automático según el tamaño de pantalla</li>
                 <li><strong>TypeScript:</strong> Tipado completo para todas las opciones</li>
                 <li><strong>Reutilización:</strong> Un componente para todos los casos de uso</li>
+                <li><strong>Documentación:</strong> Ejemplos claros y casos de uso comunes</li>
               </ul>
             </div>
           </div>

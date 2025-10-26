@@ -22,7 +22,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           },
           "publisher": {
             "@type": "Organization",
-            "name": "WebSnack",
+            "name": "webcode.es",
             "url": "https://guia-spline.vercel.app"
           }
         }
@@ -35,11 +35,11 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           "description": data.description,
           "author": {
             "@type": "Organization",
-            "name": "WebSnack"
+            "name": "webcode.es"
           },
           "publisher": {
             "@type": "Organization",
-            "name": "WebSnack",
+            "name": "webcode.es",
             "logo": {
               "@type": "ImageObject",
               "url": "https://guia-spline.vercel.app/logo.png"
@@ -98,7 +98,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           "description": "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js",
           "provider": {
             "@type": "Organization",
-            "name": "WebSnack",
+            "name": "webcode.es",
             "url": "https://guia-spline.vercel.app"
           },
           "courseMode": "online",
@@ -110,7 +110,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
             "courseMode": "online",
             "instructor": {
               "@type": "Organization",
-              "name": "WebSnack"
+              "name": "webcode.es"
             }
           }
         }

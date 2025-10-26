@@ -128,8 +128,8 @@ import SplineBackground from '@/components/SplineBackground';
 <SplineBackground 
   preset="BACKGROUND"
   customPosition={{
-    top: '-25%',
-    right: 'clamp(-30%, -8vw, -5%)',  // Se desplaza más a la derecha en pantallas grandes
+    top: '-30%',  // Posición vertical ajustada
+    right: 'clamp(-35%, -8vw, -38%)',  // Se desplaza más a la derecha en pantallas grandes
     transform: 'translate(clamp(50px, 10vw, 200px), -50px)'  // Desplazamiento horizontal responsive
   }}
 />
@@ -137,15 +137,28 @@ import SplineBackground from '@/components/SplineBackground';
 
 ### Cómo Funciona el Desplazamiento Responsive
 
-- **`right: 'clamp(-30%, -8vw, -5%)'`**:
-  - Pantallas pequeñas: `-30%` (más a la izquierda)
+- **`top: '-30%'`**: Posición vertical ajustada para mejor encuadre (mejorado desde `-25%`)
+- **`right: 'clamp(-35%, -8vw, -38%)'`**:
+  - Pantallas pequeñas: `-35%` (más a la izquierda, ajustado desde `-30%`)
   - Pantallas medianas: `-8vw` (proporcional al viewport)
-  - Pantallas grandes: `-5%` (más a la derecha)
+  - Pantallas grandes: `-38%` (más desplazado hacia la derecha, ajustado desde `-5%`)
 
 - **`transform: 'translate(clamp(50px, 10vw, 200px), -50px)'`**:
   - Pantallas pequeñas: `50px` de desplazamiento horizontal
   - Pantallas medianas: `10vw` (proporcional al viewport)
   - Pantallas grandes: `200px` de desplazamiento horizontal
+
+### 📊 Mejoras en el Comportamiento Responsive
+
+**Cambios Implementados:**
+- **Posición vertical**: `-25%` → `-30%` (mejor encuadre)
+- **Pantallas pequeñas**: `-30%` → `-35%` (más espacio a la izquierda)
+- **Pantallas grandes**: `-5%` → `-38%` (desplazamiento más pronunciado hacia la derecha)
+
+**Resultado Visual Mejorado:**
+- Mejor distribución del espacio en pantallas pequeñas
+- Transición más suave entre tamaños de pantalla
+- Desplazamiento más efectivo hacia la derecha en desktop
 
 ### Múltiples Escenas
 ```tsx
@@ -187,13 +200,29 @@ import SplineBackground from '@/components/SplineBackground';
 </div>
 ```
 
-### Después (Sistema unificado)
+### Después (Sistema unificado básico)
 ```tsx
 <SplineBackground 
   scene="/scene.splinecode"
   preset="BACKGROUND"
 />
 ```
+
+### Después (Sistema unificado con desplazamiento responsive)
+```tsx
+<SplineBackground 
+  scene="/scene.splinecode"
+  preset="BACKGROUND_RESPONSIVE"
+/>
+```
+
+### Comparación de Comportamiento
+
+| Pantalla | Antes | Después (Básico) | Después (Responsive) |
+|----------|-------|------------------|----------------------|
+| **Móvil** | Fijo centrado | Fijo offset | `-35%` right, `50px` translate |
+| **Tablet** | Fijo centrado | Fijo offset | `-8vw` right, `10vw` translate |
+| **Desktop** | Fijo centrado | Fijo offset | `-38%` right, `200px` translate |
 
 ## 💡 Ventajas del Sistema Unificado
 
@@ -203,3 +232,25 @@ import SplineBackground from '@/components/SplineBackground';
 4. **TypeScript**: Tipado completo para todas las opciones
 5. **Reutilización**: Un componente para todos los casos de uso
 6. **Documentación**: Ejemplos claros y casos de uso comunes
+
+## 📝 Changelog
+
+### v1.1.0 - Desplazamiento Responsive Mejorado
+- ✅ **Nueva posición `RESPONSIVE_RIGHT`** con valores optimizados
+- ✅ **Nuevo preset `BACKGROUND_RESPONSIVE`** para uso inmediato
+- ✅ **Mejoras en el comportamiento responsive**:
+  - Posición vertical: `-25%` → `-30%` (mejor encuadre)
+  - Pantallas pequeñas: `-30%` → `-35%` (más espacio a la izquierda)
+  - Pantallas grandes: `-5%` → `-38%` (desplazamiento más pronunciado)
+- ✅ **Documentación actualizada** con ejemplos y comparaciones
+
+### v1.0.0 - Sistema Unificado Inicial
+- ✅ Sistema centralizado de estilos Spline
+- ✅ Presets predefinidos (`BACKGROUND`, `HERO`, `SIDEBAR`, `MODAL`)
+- ✅ Posiciones estándar (`CENTER`, `TOP_RIGHT`, `TOP_LEFT`, etc.)
+- ✅ Componente `SplineBackground` con TypeScript completo
+- ✅ Documentación completa con ejemplos
+
+---
+
+**Recordatorio**: Estas prácticas están optimizadas para Next.js 16, Tailwind CSS v4 y React 19.2. Siempre mantener las dependencias actualizadas y seguir las guías oficiales de cada tecnología.

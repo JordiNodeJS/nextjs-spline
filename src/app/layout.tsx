@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     "experiencias interactivas",
     "frontend",
   ],
-  authors: [{ name: "WebSnack" }],
-  creator: "WebSnack",
-  publisher: "WebSnack",
+  authors: [{ name: "webcode.es" }],
+  creator: "webcode.es",
+  publisher: "webcode.es",
   formatDetection: {
     email: false,
     address: false,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     description:
       "Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. Guía completa con ejemplos prácticos.",
     images: ["/og-image.jpg"],
-    creator: "@websnack",
+    creator: "@webcode_es",
   },
   robots: {
     index: true,
