@@ -25,10 +25,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Estilos para mover el logo de Spline hacia la derecha y arriba */
+/* Estilos para la escena Spline interactiva */
 canvas {
-  transform: translate(clamp(80px, 12vw, 200px), clamp(-150px, -12vh, -50px));
-  position: relative;
-  top: clamp(-80px, -6vh, -30px);
-  left: clamp(150px, 20vw, 500px);
+  width: 100%;
+  height: 100%;
 }

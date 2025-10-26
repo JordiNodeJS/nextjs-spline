@@ -30,25 +30,16 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Fixed background with Spline scene */}
-      <div className="fixed inset-0 z-0 overflow-hidden">
-        <div 
-          className="absolute w-[150%] h-[150%]"
-          style={{
-            top: '-25%',
-            right: '-25%',
-            transform: 'translate(50px, -50px)'
-          }}
-        >
-          <Spline scene="/scene.splinecode" />
-        </div>
+      {/* Interactive Spline scene - dedicated interaction zone */}
+      <div className="fixed top-0 right-0 w-[40vw] h-[40vh] z-50 pointer-events-auto">
+        <Spline scene="/scene.splinecode" />
       </div>
       
-      {/* Content layer on top */}
+      {/* Content layer - positioned to avoid interaction zone */}
       <div className="relative z-10 min-h-screen">
         {/* Hero Section */}
         <section className="flex min-h-screen items-center justify-start px-4">
-          <div className="text-left max-w-6xl mx-auto">
+          <div className="text-left max-w-3xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-full border border-white/20 dark:border-white/10 mb-8">
               <Star className="w-4 h-4 text-yellow-400" />
@@ -68,7 +59,7 @@ export default function Home() {
               Integra Experiencias 3D en Next.js
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl leading-relaxed">
               Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. 
               Desde la instalación hasta las mejores prácticas profesionales.
             </p>
@@ -94,7 +85,7 @@ export default function Home() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
               {estadisticas.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-3 border border-white/20 dark:border-white/10">

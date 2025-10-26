@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, Code, Copy, Lightbulb, Performance, Shield, Zap } from "lucide-react";
+import { ArrowLeft, CheckCircle, Code, Copy, Lightbulb, Gauge, Shield, Zap } from "lucide-react";
 
 export default function MejoresPracticasSpline() {
   const mejoresPracticas = [
     {
       categoria: "Rendimiento",
-      icono: <Performance className="w-6 h-6" />,
+      icono: <Gauge className="w-6 h-6" />,
       color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
       items: [
         {
@@ -192,7 +192,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`spline-container ${isMobile ? 'mobile-optimized' : 'desktop-optimized'}`}>
+    <div className={\`spline-container \${isMobile ? 'mobile-optimized' : 'desktop-optimized'}\`}>
       <Spline 
         scene={isMobile ? "/escena-mobile.splinecode" : "/escena-desktop.splinecode"}
         style={{
