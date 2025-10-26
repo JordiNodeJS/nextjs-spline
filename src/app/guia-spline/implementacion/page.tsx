@@ -355,9 +355,8 @@ export default function LandingWebCode() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                 Ejemplo de uso
               </h3>
-              <div className="bg-gray-900 rounded-lg p-4">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-                  <code>{`'use client';
+              <CodeBlock 
+                code={`'use client';
 
 import { useState } from 'react';
 import Spline from '@splinetool/react-spline/next';
@@ -374,9 +373,10 @@ export default function InteractiveSpline() {
       />
     </div>
   );
-}`}</code>
-                </pre>
-              </div>
+}`}
+                language="tsx"
+                className="mt-4"
+              />
             </div>
           </div>
         </div>
@@ -590,9 +590,8 @@ export default function InteractiveSpline() {
                 <Code className="w-5 h-5 text-cyan-500" />
                 Ejemplo de estructura correcta
               </h4>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-xs">
-                  <code>{`<div className="relative min-h-screen">
+              <CodeBlock 
+                code={`<div className="relative min-h-screen">
   {/* Capa 1: Escena 3D (z-0, interactiva) */}
   <SplineBackground
     scene={SPLINE_SCENES.KEYBOARD}
@@ -620,9 +619,10 @@ export default function InteractiveSpline() {
       <div className="hidden lg:block pointer-events-none" /> {/* ← none */}
     </div>
   </div>
-</div>`}</code>
-                </pre>
-              </div>
+</div>`}
+                language="tsx"
+                className="mt-4"
+              />
             </div>
           </div>
         </div>

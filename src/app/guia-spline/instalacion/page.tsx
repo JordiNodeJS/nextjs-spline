@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle, Download, Settings, Terminal } from "lucide-react";
 import type { Metadata } from "next";
+import CodeBlock from "@/components/CodeBlock";
 import PageHeader from "@/components/PageHeader";
 import PageLayout from "@/components/PageLayout";
 import PageNavigation from "@/components/PageNavigation";
@@ -76,11 +77,11 @@ cd mi-proyecto-spline`,
                   </p>
                 </div>
               </div>
-              <div className="bg-gray-900 rounded-lg p-4">
-                <pre className="text-green-400 text-sm overflow-x-auto">
-                  <code>{paso.codigo}</code>
-                </pre>
-              </div>
+              <CodeBlock 
+                code={paso.codigo}
+                language="bash"
+                className="mt-4"
+              />
             </div>
           ))}
         </div>
@@ -112,12 +113,12 @@ cd mi-proyecto-spline`,
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Tailwind CSS (Opcional)
               </h3>
-              <div className="bg-gray-900 rounded-lg p-4 mb-4">
-                <pre className="text-green-400 text-sm">
-                  <code>{`pnpm add -D tailwindcss postcss autoprefixer
-pnpm dlx tailwindcss init -p`}</code>
-                </pre>
-              </div>
+              <CodeBlock 
+                code={`pnpm add -D tailwindcss postcss autoprefixer
+pnpm dlx tailwindcss init -p`}
+                language="bash"
+                className="mb-4"
+              />
               <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Para estilizar fácilmente tus componentes y posicionar las escenas de Spline
               </p>
@@ -126,12 +127,12 @@ pnpm dlx tailwindcss init -p`}</code>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Variables de Entorno
               </h3>
-              <div className="bg-gray-900 rounded-lg p-4 mb-4">
-                <pre className="text-green-400 text-sm">
-                  <code>{`# .env.local
-NEXT_PUBLIC_SPLINE_SCENE_URL=/scene.splinecode`}</code>
-                </pre>
-              </div>
+              <CodeBlock 
+                code={`# .env.local
+NEXT_PUBLIC_SPLINE_SCENE_URL=/scene.splinecode`}
+                language="bash"
+                className="mb-4"
+              />
               <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Para gestionar las URLs de las escenas de manera centralizada
               </p>
