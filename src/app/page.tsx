@@ -1,47 +1,91 @@
 import Link from "next/link";
-import Spline from '@splinetool/react-spline/next';
-import { ArrowRight, BookOpen, Code, Palette, Zap, Star, Users, Clock } from "lucide-react";
+import Spline from "@splinetool/react-spline/next";
+import {
+  ArrowRight,
+  BookOpen,
+  Code,
+  Palette,
+  Zap,
+  Star,
+  Users,
+  Clock,
+} from "lucide-react";
 
 export default function Home() {
   const caracteristicas = [
     {
       icono: <Code className="w-8 h-8 text-pink-500" />,
       titulo: "Implementación Paso a Paso",
-      descripcion: "Desde la instalación hasta la implementación avanzada con ejemplos prácticos"
+      descripcion:
+        "Desde la instalación hasta la implementación avanzada con ejemplos prácticos",
     },
     {
       icono: <Palette className="w-8 h-8 text-cyan-500" />,
       titulo: "Personalización Completa",
-      descripcion: "Aprende a posicionar, estilizar y hacer responsive tus escenas 3D"
+      descripcion:
+        "Aprende a posicionar, estilizar y hacer responsive tus escenas 3D",
     },
     {
       icono: <Zap className="w-8 h-8 text-purple-500" />,
       titulo: "Optimización Profesional",
-      descripcion: "Mejores prácticas para rendimiento, accesibilidad y experiencia de usuario"
-    }
+      descripcion:
+        "Mejores prácticas para rendimiento, accesibilidad y experiencia de usuario",
+    },
   ];
 
   const estadisticas = [
-    { numero: "4", etiqueta: "Pasos Detallados", icono: <BookOpen className="w-6 h-6" /> },
-    { numero: "15+", etiqueta: "Ejemplos de Código", icono: <Code className="w-6 h-6" /> },
-    { numero: "100%", etiqueta: "Gratuito", icono: <Star className="w-6 h-6" /> },
-    { numero: "30min", etiqueta: "Tiempo de Aprendizaje", icono: <Clock className="w-6 h-6" /> }
+    {
+      numero: "4",
+      etiqueta: "Pasos Detallados",
+      icono: <BookOpen className="w-6 h-6" />,
+    },
+    {
+      numero: "15+",
+      etiqueta: "Ejemplos de Código",
+      icono: <Code className="w-6 h-6" />,
+    },
+    {
+      numero: "100%",
+      etiqueta: "Gratuito",
+      icono: <Star className="w-6 h-6" />,
+    },
+    {
+      numero: "30min",
+      etiqueta: "Tiempo de Aprendizaje",
+      icono: <Clock className="w-6 h-6" />,
+    },
   ];
 
   return (
     <div className="relative min-h-screen">
-      {/* Interactive Spline scene - dedicated interaction zone */}
-      <div className="fixed top-0 right-0 w-[40vw] h-[40vh] z-50 pointer-events-auto">
-        <Spline scene="/scene.splinecode" />
+      {/* Spline scene - Background layer (no interaction) */}
+      <div className="fixed top-0 right-0 w-[120%] h-[120%] z-0 pointer-events-none overflow-hidden">
+        <div 
+          className="absolute w-full h-full"
+          style={{
+            top: '-20%',
+            right: '-35%',
+            transform: 'translate(0%, 0%)'
+          }}
+        >
+          <Spline scene="/scene.splinecode" />
+        </div>
       </div>
-      
-      {/* Content layer - positioned to avoid interaction zone */}
-      <div className="relative z-10 min-h-screen">
+
+      {/* Interactive zone - Top right corner */}
+      <div className="fixed top-0 right-0 w-[500px] h-[500px] z-30 pointer-events-auto">
+        <div className="w-full h-full bg-transparent">
+          {/* This area allows interaction with the Spline scene */}
+        </div>
+      </div>
+
+      {/* Content layer */}
+      <div className="relative z-10 min-h-screen pointer-events-auto">
         {/* Hero Section */}
-        <section className="flex min-h-screen items-center justify-start px-4">
-          <div className="text-left max-w-3xl">
+        <section className="flex min-h-screen items-center justify-start px-4 pt-8">
+          <div className="text-left max-w-2xl bg-black/30 dark:bg-black/50 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-full border border-white/20 dark:border-white/10 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 dark:bg-black/20 backdrop-blur-md rounded-full border border-white/30 dark:border-white/20 mb-8">
               <Star className="w-4 h-4 text-yellow-400" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Guía Completa y Gratuita
@@ -54,13 +98,13 @@ export default function Home() {
                 Guía Spline
               </span>
             </h1>
-            
+
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Integra Experiencias 3D en Next.js
             </h2>
-            
+
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl leading-relaxed">
-              Aprende paso a paso cómo integrar Spline en tus proyectos Next.js. 
+              Aprende paso a paso cómo integrar Spline en tus proyectos Next.js.
               Desde la instalación hasta las mejores prácticas profesionales.
             </p>
 
@@ -74,7 +118,7 @@ export default function Home() {
                 Comenzar Guía
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              
+
               <Link
                 href="/guia-spline/instalacion"
                 className="flex h-14 w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 px-8 text-gray-700 dark:text-gray-300 font-semibold text-lg transition-all hover:bg-white/20 dark:hover:bg-black/20"
@@ -89,9 +133,7 @@ export default function Home() {
               {estadisticas.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-3 border border-white/20 dark:border-white/10">
-                    <div className="text-pink-500">
-                      {stat.icono}
-                    </div>
+                    <div className="text-pink-500">{stat.icono}</div>
                   </div>
                   <div className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-1">
                     {stat.numero}
@@ -119,10 +161,11 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {caracteristicas.map((caracteristica, index) => (
-                <div key={index} className="bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-2xl p-8 border border-white/20 dark:border-white/10 hover:shadow-2xl transition-all duration-300">
-                  <div className="mb-6">
-                    {caracteristica.icono}
-                  </div>
+                <div
+                  key={index}
+                  className="bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl p-8 border border-white/30 dark:border-white/20 hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="mb-6">{caracteristica.icono}</div>
                   <h4 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                     {caracteristica.titulo}
                   </h4>
@@ -143,7 +186,8 @@ export default function Home() {
                 ¿Listo para Crear Experiencias 3D Increíbles?
               </h3>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Únete a miles de desarrolladores que ya están usando Spline en sus proyectos
+                Únete a miles de desarrolladores que ya están usando Spline en
+                sus proyectos
               </p>
               <Link
                 href="/guia-spline"
