@@ -409,7 +409,10 @@ export default function InteractiveSpline() {
                       CRÍTICO:
                     </strong>{" "}
                     El container de SplineBackground debe usar el preset{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="fixed inset-0 z-0 pointer-events-auto overflow-hidden"
+                    >
                       FIXED_FULLSCREEN_INTERACTIVE
                     </code>
                   </div>
@@ -418,7 +421,10 @@ export default function InteractiveSpline() {
                       ✓ Hacer:
                     </strong>{" "}
                     Usar{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="No permite eventos de puntero en el elemento"
+                    >
                       pointer-events-none
                     </code>{" "}
                     en capas de overlay y contenido
@@ -428,7 +434,10 @@ export default function InteractiveSpline() {
                       ✗ Evitar:
                     </strong>{" "}
                     Divs con{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="Permite todos los eventos de puntero en el elemento"
+                    >
                       pointer-events-auto
                     </code>{" "}
                     sobre la escena que bloqueen la interacción
@@ -443,25 +452,37 @@ export default function InteractiveSpline() {
                 </h3>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <div className="flex items-start gap-2">
-                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span 
+                      className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="z-index: 0 - Capa más baja"
+                    >
                       z-0
                     </span>
                     <span>SplineBackground (interactivo)</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span 
+                      className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="z-index: 1 - Capa intermedia"
+                    >
                       z-[1]
                     </span>
                     <span>Overlay de gradiente (pointer-events-none)</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span 
+                      className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="z-index: 10 - Capa superior"
+                    >
                       z-10
                     </span>
                     <span>Contenido (pointer-events-none en container)</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span 
+                      className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded cursor-help"
+                      title="Sin z-index específico"
+                    >
                       ---
                     </span>
                     <span>
@@ -482,7 +503,10 @@ export default function InteractiveSpline() {
                   </li>
                   <li>
                     • Aplica{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="Filtro de difuminado de fondo (backdrop-filter: blur(4px))"
+                    >
                       backdrop-blur-sm
                     </code>{" "}
                     para efecto glassmorphism
@@ -502,7 +526,10 @@ export default function InteractiveSpline() {
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <li>
                     • Usa{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="Contenedor: FIXED_FULLSCREEN, Posición: RESPONSIVE_RIGHT (top: -30%, right: clamp(-35%, -8vw, -38%))"
+                    >
                       BACKGROUND_RESPONSIVE
                     </code>{" "}
                     para posicionamiento adaptativo
@@ -516,7 +543,10 @@ export default function InteractiveSpline() {
                   </li>
                   <li>
                     • Usa grid{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="Grid de 2 columnas en pantallas grandes (≥1024px)"
+                    >
                       lg:grid-cols-2
                     </code>{" "}
                     para layout adaptativo
@@ -536,7 +566,10 @@ export default function InteractiveSpline() {
                   <div>
                     <strong>No eliminar las capas bloqueantes:</strong> Si hay
                     un div con z-index superior al canvas y sin{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="No permite eventos de puntero en el elemento"
+                    >
                       pointer-events-none
                     </code>
                     , bloqueará toda la interacción.
@@ -547,15 +580,24 @@ export default function InteractiveSpline() {
                   <div>
                     <strong>Usar preset incorrecto:</strong> El preset por
                     defecto{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+                    >
                       FIXED_FULLSCREEN
                     </code>{" "}
                     tiene{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="No permite eventos de puntero en el elemento"
+                    >
                       pointer-events-none
                     </code>
                     , usa{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="fixed inset-0 z-0 pointer-events-auto overflow-hidden"
+                    >
                       FIXED_FULLSCREEN_INTERACTIVE
                     </code>{" "}
                     para escenas interactivas.
@@ -574,11 +616,17 @@ export default function InteractiveSpline() {
                   <div>
                     <strong>Aplicar pointer-events granularmente:</strong>{" "}
                     Container con{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="No permite eventos de puntero en el elemento"
+                    >
                       pointer-events-none
                     </code>
                     , elementos interactivos con{" "}
-                    <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">
+                    <code 
+                      className="bg-gray-100 dark:bg-gray-700 px-1 rounded cursor-help"
+                      title="Permite todos los eventos de puntero en el elemento"
+                    >
                       pointer-events-auto
                     </code>
                     .
@@ -602,10 +650,10 @@ export default function InteractiveSpline() {
     className="fixed inset-0 z-0"
   />
 
-  {/* Capa 2: Overlay de gradiente (z-[1], no interactivo) */}
-  <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 
-                  bg-gradient-to-r from-black/60 to-transparent 
-                  z-[1] pointer-events-none" /> {/* ← pointer-events-none */}
+                {/* Capa 2: Overlay de gradiente (z-[1], no interactivo) */}
+              <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2
+                  bg-gradient-to-r from-black/60 to-transparent
+                  z-[1] pointer-events-none" /> {/* ← No bloquea interacción */}
 
   {/* Capa 3: Contenido (z-10) */}
   <div className="relative z-10 min-h-screen flex items-center 
